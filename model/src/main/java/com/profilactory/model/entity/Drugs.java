@@ -7,5 +7,5 @@ package com.profilactory.model.entity;
  * Time: 19:25
  * To change this template use File | Settings | File Templates.
  */
-public class Patient {
+public class Drugs {
 }
