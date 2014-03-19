@@ -4,10 +4,10 @@
   "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
   <session-factory>
-    <property name="connection.url"/>
-    <property name="connection.driver_class"/>
-    <property name="connection.username"/>
-    <property name="connection.password"/>
+    <property name="connection.url">jdbc:oracle:thin:@localhost:1521:xe</property>
+    <property name="connection.driver_class">org.hibernate.dialect.Oracle10gDialect</property>
+    <property name="connection.username">System</property>
+    <property name="connection.password">N9326172</property>
     <!-- DB schema will be updated if needed -->
     <!-- <property name="hbm2ddl.auto">update</property> -->
   </session-factory>

@@ -5,13 +5,13 @@ import javax.persistence.*;
 /**
  * Created with IntelliJ IDEA.
  * User: Валентин
- * Date: 16.03.14
- * Time: 19:25
- * To change this template use File | Settings | File Templates.
- */
+ * Date: 17.03.14
+ * Time: 21:03
+ * */
+
 @Entity
-@Table(name = "drugs")
-public class Drugs {
+@Table(name = "diagnosis")
+public class Diagnosis {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,8 +19,6 @@ public class Drugs {
 
     @Column(name = "name")
     private String name;
-    @Column(name = "type")
-    private String type;
 
     public Long getId() {
         return id;
@@ -36,13 +34,5 @@ public class Drugs {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
     }
 }

@@ -1,17 +1,19 @@
 package com.profilactory.model.entity;
 
+import org.hibernate.annotations.Tables;
+
 import javax.persistence.*;
 
 /**
  * Created with IntelliJ IDEA.
  * User: Валентин
- * Date: 16.03.14
- * Time: 19:25
+ * Date: 17.03.14
+ * Time: 21:13
  * To change this template use File | Settings | File Templates.
  */
 @Entity
-@Table(name = "drugs")
-public class Drugs {
+@Table(name = "procedure")
+public class Procedure {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,8 +21,9 @@ public class Drugs {
 
     @Column(name = "name")
     private String name;
-    @Column(name = "type")
-    private String type;
+
+    @Column(name = "destination")
+    private String destination;
 
     public Long getId() {
         return id;
@@ -38,11 +41,11 @@ public class Drugs {
         this.name = name;
     }
 
-    public String getType() {
-        return type;
+    public String getDestination() {
+        return destination;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setDestination(String destination) {
+        this.destination = destination;
     }
 }
