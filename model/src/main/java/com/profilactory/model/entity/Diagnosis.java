@@ -1,38 +1,63 @@
 package com.profilactory.model.entity;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Валентин
- * Date: 17.03.14
- * Time: 21:03
- * */
-
+ * Created by ValentinBlokhin on 3/23/2014.
+ */
 @Entity
-@Table(name = "diagnosis")
 public class Diagnosis {
+    private int diagnosisId;
+    private String name;
+    private Collection<DrugDiagnosis> drugDiagnosisesByDiagnosisId;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(name = "name")
-    private String name;
-
-    public Long getId() {
-        return id;
+    @Column(name = "DIAGNOSIS_ID", nullable = false, insertable = true, updatable = true, precision = 0)
+    public int getDiagnosisId() {
+        return diagnosisId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setDiagnosisId(int diagnosisId) {
+        this.diagnosisId = diagnosisId;
     }
 
+    @Basic
+    @Column(name = "NAME", nullable = false, insertable = true, updatable = true, length = 30)
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Diagnosis diagnosis = (Diagnosis) o;
+
+        if (diagnosisId != diagnosis.diagnosisId) return false;
+        if (name != null ? !name.equals(diagnosis.name) : diagnosis.name != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = diagnosisId;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        return result;
+    }
+
+    @OneToMany(mappedBy = "diagnosisByIdDiagnosis")
+    public Collection<DrugDiagnosis> getDrugDiagnosisesByDiagnosisId() {
+        return drugDiagnosisesByDiagnosisId;
+    }
+
+    public void setDrugDiagnosisesByDiagnosisId(Collection<DrugDiagnosis> drugDiagnosisesByDiagnosisId) {
+        this.drugDiagnosisesByDiagnosisId = drugDiagnosisesByDiagnosisId;
     }
 }
