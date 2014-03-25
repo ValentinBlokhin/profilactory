@@ -1,8 +1,6 @@
 package com.profilactory.model.dao.hibernate;
 
-import com.profilactory.model.dao.Dao;
 import com.profilactory.model.entity.Cabinet;
-import com.profilactory.model.entity.Diagnosis;
 import org.hibernate.SessionFactory;
 
 import java.util.List;
@@ -11,7 +9,7 @@ import java.util.List;
  * Created by ValentinBlokhin on 3/25/2014.
  */
 public class DiagnosisHibernateDao extends AbstractHibernateDao {
-
+    private SessionFactory sessionFactory;
 
     @Override
     public void saveOrUpdate(Cabinet persistence) {
