@@ -1,0 +1,48 @@
+package com.profilactory.model.dao.hibernate;
+
+import com.profilactory.model.dao.Dao;
+import com.profilactory.model.entity.Cabinet;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
+import org.hibernate.Query;
+import java.util.List;
+
+/**
+ * Created by ValentinBlokhin on 3/25/2014.
+ */
+public class CabinetHibernateDao extends AbstractHibernateDao {
+
+    @Override
+    public void saveOrUpdate(Cabinet persistence) {
+    getSession().save(persistence);
+    }
+
+    @Override
+    public void delete(Long id) {
+        Query query = getSession().createQuery("delete Cabinet where id = :cabinetId");
+        query.setLong("cabinetId", id);
+
+
+    }
+
+    @Override
+    public void delete(Cabinet persistence) {
+    getSession().delete(persistence);
+    }
+
+    @Override
+    public Cabinet get(Long id) {
+        return (Cabinet) getSession().load(Cabinet.class, id);
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public List<Cabinet> getAll(int pageNumber, int pageSize) {
+        Query query = getSession().createQuery("from Cabinet");
+        query.setFirstResult(pageNumber);
+        query.setMaxResults(pageSize);
+        return query.list();
+    }
+
+}
