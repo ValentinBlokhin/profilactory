@@ -12,20 +12,19 @@ public class CabinetHibernateDao extends AbstractHibernateDao<Cabinet> {
 
     @Override
     public void saveOrUpdate(Cabinet persistence) {
-    getSession().save(persistence);
+        getSession().save(persistence);
     }
 
     @Override
     public void delete(Long id) {
         Query query = getSession().createQuery("delete Cabinet where cabinetId = :cabinetId");
         query.setLong("cabinetId", id);
-
-
+        query.executeUpdate();
     }
 
     @Override
     public void delete(Cabinet persistence) {
-    getSession().delete(persistence);
+        getSession().delete(persistence);
     }
 
     @Override

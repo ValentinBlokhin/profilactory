@@ -18,6 +18,7 @@ public class DrugDiagnosisHibernateDao extends AbstractHibernateDao<DrugDiagnosi
     public void delete(Long id) {
         Query query = getSession().createQuery("from DrugDiagnosis where id = :drugDiagnosisId");
         query.setLong("drugDiagnosisId", id);
+        query.executeUpdate();
     }
 
     @Override

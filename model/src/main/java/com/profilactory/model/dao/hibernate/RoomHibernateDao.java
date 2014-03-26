@@ -18,6 +18,7 @@ public class RoomHibernateDao extends AbstractHibernateDao<Room> {
     public void delete(Long id) {
         Query query = getSession().createQuery("from Room where roomId = :roomId");
         query.setLong("roomId", id);
+        query.executeUpdate();
 
     }
 

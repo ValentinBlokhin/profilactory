@@ -18,6 +18,7 @@ public class CurrentPatientHibernateDao extends AbstractHibernateDao<CurrentPati
     public void delete(Long id) {
         Query query = getSession().createQuery("from CurrentPatient where currentPatientId = :currentPatientId");
         query.setLong("currentPatientId", id);
+        query.executeUpdate();
     }
 
     @Override
