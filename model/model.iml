@@ -4,6 +4,7 @@
     <facet type="hibernate" name="Hibernate">
       <configuration>
         <datasource-map>
+          <unit-entry name="com.profilactory.model:entity:hibernate.cfg.xml" value="c4c22451-3621-41f8-94a6-49d4864c8249" />
           <unit-entry name="hibernate.cfg.xml" value="d733c8f1-db01-402a-b55a-78596d0c531b" />
           <unit-entry name="sessionFactory" value="dataSource" />
         </datasource-map>
@@ -15,7 +16,9 @@
     </facet>
     <facet type="Spring" name="Spring">
       <configuration>
-        <fileset id="fileset" name="Spring Application Context" removed="false" />
+        <fileset id="fileset" name="Spring Application Context" removed="false">
+          <file>file://$MODULE_DIR$/src/main/resources/com.profilactory.model/entity/spring-config.xml</file>
+        </fileset>
       </configuration>
     </facet>
   </component>

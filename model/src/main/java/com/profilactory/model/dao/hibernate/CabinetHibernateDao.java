@@ -1,17 +1,14 @@
 package com.profilactory.model.dao.hibernate;
 
-import com.profilactory.model.dao.Dao;
 import com.profilactory.model.entity.Cabinet;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-
 import org.hibernate.Query;
+
 import java.util.List;
 
 /**
  * Created by ValentinBlokhin on 3/25/2014.
  */
-public class CabinetHibernateDao extends AbstractHibernateDao {
+public class CabinetHibernateDao extends AbstractHibernateDao<Cabinet> {
 
     @Override
     public void saveOrUpdate(Cabinet persistence) {
@@ -20,7 +17,7 @@ public class CabinetHibernateDao extends AbstractHibernateDao {
 
     @Override
     public void delete(Long id) {
-        Query query = getSession().createQuery("delete Cabinet where id = :cabinetId");
+        Query query = getSession().createQuery("delete Cabinet where cabinetId = :cabinetId");
         query.setLong("cabinetId", id);
 
 
