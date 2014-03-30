@@ -15,9 +15,9 @@ public class DrugHibernateDao extends AbstractHibernateDao<Drug> {
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(Integer id) {
         Query query = getSession().createQuery("from Drug where drugId = :drugId");
-        query.setLong("drugId", id);
+        query.setInteger("drugId", id);
         query.executeUpdate();
     }
 
@@ -27,7 +27,7 @@ public class DrugHibernateDao extends AbstractHibernateDao<Drug> {
     }
 
     @Override
-    public Drug get(Long id) {
+    public Drug get(Integer id) {
         return (Drug) getSession().load(Drug.class, id);
     }
 

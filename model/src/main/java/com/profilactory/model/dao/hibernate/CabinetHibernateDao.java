@@ -16,9 +16,9 @@ public class CabinetHibernateDao extends AbstractHibernateDao<Cabinet> {
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(Integer id) {
         Query query = getSession().createQuery("delete Cabinet where cabinetId = :cabinetId");
-        query.setLong("cabinetId", id);
+        query.setInteger("cabinetId", id);
         query.executeUpdate();
     }
 
@@ -28,7 +28,7 @@ public class CabinetHibernateDao extends AbstractHibernateDao<Cabinet> {
     }
 
     @Override
-    public Cabinet get(Long id) {
+    public Cabinet get(Integer id) {
         return (Cabinet) getSession().load(Cabinet.class, id);
     }
 

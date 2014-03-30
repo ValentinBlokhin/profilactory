@@ -15,9 +15,9 @@ public class CurrentProcedureHibernateDao extends AbstractHibernateDao<CurrentPr
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(Integer id) {
         Query query = getSession().createQuery("from CurrentProcedure where currentProcedureId = :currentProcedureId");
-        query.setLong("currentProcedureId", id);
+        query.setInteger("currentProcedureId", id);
         query.executeUpdate();
     }
 
@@ -27,7 +27,7 @@ public class CurrentProcedureHibernateDao extends AbstractHibernateDao<CurrentPr
     }
 
     @Override
-    public CurrentProcedure get(Long id) {
+    public CurrentProcedure get(Integer id) {
         return (CurrentProcedure) getSession().load(CurrentProcedure.class, id);
     }
 

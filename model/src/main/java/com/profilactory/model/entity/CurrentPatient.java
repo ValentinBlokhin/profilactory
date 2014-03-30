@@ -26,7 +26,7 @@ public class CurrentPatient {
     }
 
     @Basic
-    @Column(name = "PATIENT_ID", nullable = false, insertable = true, updatable = true, precision = 0)
+    @Column(name = "PATIENT_ID", nullable = false, insertable = false, updatable = false, precision = 0)
     public int getPatientId() {
         return patientId;
     }
@@ -36,7 +36,7 @@ public class CurrentPatient {
     }
 
     @Basic
-    @Column(name = "DRUG_DIAGNOSIS_DRUG_ID", nullable = false, insertable = true, updatable = true, precision = 0)
+    @Column(name = "DRUG_DIAGNOSIS_DRUG_ID", nullable = false, insertable = false, updatable = false, precision = 0)
     public int getDrugDiagnosisDrugId() {
         return drugDiagnosisDrugId;
     }
@@ -46,7 +46,7 @@ public class CurrentPatient {
     }
 
     @Basic
-    @Column(name = "DRUG_DIAGNOSIS_DIAGNOSIS_ID", nullable = false, insertable = true, updatable = true, precision = 0)
+    @Column(name = "DRUG_DIAGNOSIS_DIAGNOSIS_ID", nullable = false, insertable = false, updatable = false, precision = 0)
     public int getDrugDiagnosisDiagnosisId() {
         return drugDiagnosisDiagnosisId;
     }

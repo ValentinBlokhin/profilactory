@@ -15,9 +15,9 @@ public class ProcedureHibernateDao extends AbstractHibernateDao<Procedure> {
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(Integer id) {
         Query query = getSession().createQuery("from Procedure where procedureId = :procedureId");
-        query.setLong("procedureId", id);
+        query.setInteger("procedureId", id);
         query.executeUpdate();
     }
 
@@ -27,7 +27,7 @@ public class ProcedureHibernateDao extends AbstractHibernateDao<Procedure> {
     }
 
     @Override
-    public Procedure get(Long id) {
+    public Procedure get(Integer id) {
         return (Procedure) getSession().load(Procedure.class, id);
     }
 

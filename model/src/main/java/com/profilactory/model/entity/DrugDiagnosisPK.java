@@ -11,7 +11,7 @@ public class DrugDiagnosisPK implements Serializable {
     private int idDrug;
     private int idDiagnosis;
 
-    @Column(name = "ID_DRUG", nullable = false, insertable = true, updatable = true, precision = 0)
+    @Column(name = "ID_DRUG")
     @Id
     public int getIdDrug() {
         return idDrug;
@@ -21,7 +21,7 @@ public class DrugDiagnosisPK implements Serializable {
         this.idDrug = idDrug;
     }
 
-    @Column(name = "ID_DIAGNOSIS", nullable = false, insertable = true, updatable = true, precision = 0)
+    @Column(name = "ID_DIAGNOSIS")
     @Id
     public int getIdDiagnosis() {
         return idDiagnosis;

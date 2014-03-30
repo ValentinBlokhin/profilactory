@@ -17,7 +17,7 @@ public class DrugDiagnosis {
     private Drug drugByIdDrug;
 
     @Id
-    @Column(name = "ID_DRUG", nullable = false, insertable = true, updatable = true, precision = 0)
+    @Column(name = "ID_DRUG")
     public int getIdDrug() {
         return idDrug;
     }
@@ -27,7 +27,7 @@ public class DrugDiagnosis {
     }
 
     @Id
-    @Column(name = "ID_DIAGNOSIS", nullable = false, insertable = true, updatable = true, precision = 0)
+    @Column(name = "ID_DIAGNOSIS")
     public int getIdDiagnosis() {
         return idDiagnosis;
     }
@@ -66,7 +66,7 @@ public class DrugDiagnosis {
     }
 
     @ManyToOne
-    @JoinColumn(name = "ID_DIAGNOSIS", referencedColumnName = "DIAGNOSIS_ID", nullable = false)
+    @JoinColumn(name = "ID_DIAGNOSIS", referencedColumnName = "DIAGNOSIS_ID", insertable = false, updatable = false)
     public Diagnosis getDiagnosisByIdDiagnosis() {
         return diagnosisByIdDiagnosis;
     }
@@ -76,7 +76,7 @@ public class DrugDiagnosis {
     }
 
     @ManyToOne
-    @JoinColumn(name = "ID_DRUG", referencedColumnName = "DRUG_ID", nullable = false)
+    @JoinColumn(name = "ID_DRUG", referencedColumnName = "DRUG_ID", insertable = false, updatable = false)
     public Drug getDrugByIdDrug() {
         return drugByIdDrug;
     }

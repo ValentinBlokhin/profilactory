@@ -90,7 +90,7 @@ public class Permit {
     }
 
     @ManyToOne
-    @JoinColumn(name = "ROOM_ID", referencedColumnName = "ROOM_ID")
+    @JoinColumn(name = "ROOM_ID", referencedColumnName = "ROOM_ID", insertable = false, updatable = false)
     public Room getRoomByRoomId() {
         return roomByRoomId;
     }

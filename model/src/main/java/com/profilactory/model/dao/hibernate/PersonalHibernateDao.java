@@ -15,9 +15,9 @@ public class PersonalHibernateDao extends AbstractHibernateDao<Personal> {
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(Integer id) {
         Query query = getSession().createQuery("from Personal where personalId = :personalId");
-        query.setLong("personalId", id);
+        query.setInteger("personalId", id);
         query.executeUpdate();
     }
 
@@ -27,7 +27,7 @@ public class PersonalHibernateDao extends AbstractHibernateDao<Personal> {
     }
 
     @Override
-    public Personal get(Long id) {
+    public Personal get(Integer id) {
         return (Personal) getSession().load(Personal.class, id);
     }
 

@@ -67,7 +67,7 @@ public class Cabinet {
     }
 
     @ManyToOne
-    @JoinColumn(name = "PERSONAL_ID", referencedColumnName = "PERSONAL_ID", nullable = false)
+    @JoinColumn(name = "PERSONAL_ID", referencedColumnName = "PERSONAL_ID", nullable = false, insertable = false, updatable = false)
     public Personal getPersonalByPersonalId() {
         return personalByPersonalId;
     }

@@ -16,9 +16,9 @@ public class DiagnosisHibernateDao extends AbstractHibernateDao<Diagnosis> {
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(Integer id) {
         Query query = getSession().createQuery("delete Diagnosis where diagnosisId = :diagnosisId");
-        query.setLong("diagnosisId", id);
+        query.setInteger("diagnosisId", id);
         query.executeUpdate();
     }
 
@@ -28,7 +28,7 @@ public class DiagnosisHibernateDao extends AbstractHibernateDao<Diagnosis> {
     }
 
     @Override
-    public Diagnosis get(Long id) {
+    public Diagnosis get(Integer id) {
         return (Diagnosis) getSession().load(Diagnosis.class, id);
     }
 

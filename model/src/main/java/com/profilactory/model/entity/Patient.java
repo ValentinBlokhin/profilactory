@@ -3,6 +3,7 @@ package com.profilactory.model.entity;
 import javax.persistence.*;
 import java.util.Collection;
 
+
 /**
  * Created by ValentinBlokhin on 3/23/2014.
  */
@@ -69,7 +70,7 @@ public class Patient {
     }
 
     @Basic
-    @Column(name = "PERMIT_ID", nullable = false, insertable = true, updatable = true, precision = 0)
+    @Column(name = "PERMIT_ID", nullable = false, insertable = false, updatable = false, precision = 0)
     public int getPermitId() {
         return permitId;
     }
