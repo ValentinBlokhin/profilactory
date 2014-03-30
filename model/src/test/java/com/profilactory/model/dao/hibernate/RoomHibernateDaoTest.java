@@ -8,7 +8,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -17,8 +16,7 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import javax.sql.DataSource;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 /**
  * Created by ValentinBlokhin on 3/28/2014.
@@ -30,7 +28,7 @@ public class RoomHibernateDaoTest extends AbstractTransactionalJUnit4SpringConte
 
     private RoomHibernateDao roomHibernateDao = new RoomHibernateDao();
 
-    @Autowired
+    @Autowired(required = true)
     @Qualifier("sessionFactory")
     private SessionFactory sessionFactory;
 
@@ -42,10 +40,6 @@ public class RoomHibernateDaoTest extends AbstractTransactionalJUnit4SpringConte
     @Qualifier("dbFilter")
     private DataBaseFilter dataBaseFilter;
 
-    @Autowired
-    @Qualifier("jdbcTemplate")
-    private JdbcTemplate jdbcTemplate;
-
 
     @Before
     public void setUp() throws Exception {
@@ -55,6 +49,7 @@ public class RoomHibernateDaoTest extends AbstractTransactionalJUnit4SpringConte
 
     @Test
     public void testSaveOrUpdate() throws Exception {
+        dataBaseFilter.fill();
         Room room = new Room();
         room.setRoomId(3);
         room.setRoomNumber(303);
@@ -78,10 +73,6 @@ public class RoomHibernateDaoTest extends AbstractTransactionalJUnit4SpringConte
     }
 
     @Test
-    public void testDelete1() throws Exception {
-    }
-
-    @Test
     public void testGet() throws Exception {
         Room room = roomHibernateDao.get(1);
         assertNotNull(room);
@@ -90,6 +81,6 @@ public class RoomHibernateDaoTest extends AbstractTransactionalJUnit4SpringConte
     @Test
     public void testGetAll() throws Exception {
         List<Room> rooms = roomHibernateDao.getAll(0, 2);
-        assertEquals(rooms.size(), 2);
+        assertFalse(rooms.isEmpty());
     }
 }

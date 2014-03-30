@@ -14,12 +14,6 @@ public class PermitHibernateDao extends AbstractHibernateDao<Permit> {
         getSession().save(persistence);
     }
 
-    @Override
-    public void delete(Integer id) {
-        Query query = getSession().createQuery("from Permit where permitId = :permitId");
-        query.setInteger("permitId", id);
-        query.executeUpdate();
-    }
 
     @Override
     public void delete(Permit persistence) {

@@ -8,18 +8,13 @@ import java.util.List;
 /**
  * Created by ValentinBlokhin on 3/26/2014.
  */
+
 public class PersonalHibernateDao extends AbstractHibernateDao<Personal> {
     @Override
     public void saveOrUpdate(Personal persistence) {
         getSession().save(persistence);
     }
 
-    @Override
-    public void delete(Integer id) {
-        Query query = getSession().createQuery("from Personal where personalId = :personalId");
-        query.setInteger("personalId", id);
-        query.executeUpdate();
-    }
 
     @Override
     public void delete(Personal persistence) {

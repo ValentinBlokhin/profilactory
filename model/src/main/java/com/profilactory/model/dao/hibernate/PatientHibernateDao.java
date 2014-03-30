@@ -15,13 +15,6 @@ public class PatientHibernateDao extends AbstractHibernateDao<Patient> {
     }
 
     @Override
-    public void delete(Integer id) {
-        Query query = getSession().createQuery("from Patient where patientId = :patientId");
-        query.setInteger("patientId", id);
-        query.executeUpdate();
-    }
-
-    @Override
     public void delete(Patient persistence) {
         getSession().delete(persistence);
     }

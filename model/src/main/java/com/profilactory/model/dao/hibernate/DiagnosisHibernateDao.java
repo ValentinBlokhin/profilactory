@@ -15,12 +15,6 @@ public class DiagnosisHibernateDao extends AbstractHibernateDao<Diagnosis> {
         getSession().save(persistence);
     }
 
-    @Override
-    public void delete(Integer id) {
-        Query query = getSession().createQuery("delete Diagnosis where diagnosisId = :diagnosisId");
-        query.setInteger("diagnosisId", id);
-        query.executeUpdate();
-    }
 
     @Override
     public void delete(Diagnosis persistence) {

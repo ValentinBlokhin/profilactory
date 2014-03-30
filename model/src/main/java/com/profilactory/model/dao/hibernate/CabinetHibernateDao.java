@@ -16,13 +16,6 @@ public class CabinetHibernateDao extends AbstractHibernateDao<Cabinet> {
     }
 
     @Override
-    public void delete(Integer id) {
-        Query query = getSession().createQuery("delete Cabinet where cabinetId = :cabinetId");
-        query.setInteger("cabinetId", id);
-        query.executeUpdate();
-    }
-
-    @Override
     public void delete(Cabinet persistence) {
         getSession().delete(persistence);
     }

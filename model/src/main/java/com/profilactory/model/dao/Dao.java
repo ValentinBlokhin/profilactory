@@ -11,8 +11,6 @@ public interface Dao<T> {
 
     void saveOrUpdate(T persistence);
 
-    void delete(Integer id);
-
     void delete(T persistence);
 
     T get(Integer id);
