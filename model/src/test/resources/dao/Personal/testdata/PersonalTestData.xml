@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <table name="PERSONAL">
+        <column>personal_id</column>
+        <column>post</column>
+        <column>work_time</column>
+        <row>
+            <value>1</value>
+            <value>stomatologist</value>
+            <value>8:00 AM to 5:00 PM</value>
+        </row>
+        <row>
+            <value>2</value>
+            <value>masseur</value>
+            <value>1:00 PM to 4:00 PM</value>
+        </row>
+    </table>
+</dataset>
