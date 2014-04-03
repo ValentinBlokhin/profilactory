@@ -13,7 +13,6 @@
 
     <bean id="dbFilter" class="com.profilactory.model.dao.databasefilter.DataBaseFilter">
         <constructor-arg name="dataSource" ref="dataSource"/>
-        <constructor-arg name="fullXmlDataFileName" value="/dao/Personal/testdata/PersonalTestData.xml"/>
+        <constructor-arg name="fullXmlDataFileName" value="/dao/Procedure/testdata/ProcedureTestData.xml"/>
     </bean>
-
 </beans>

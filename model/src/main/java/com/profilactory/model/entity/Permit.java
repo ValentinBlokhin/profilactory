@@ -98,4 +98,5 @@ public class Permit {
     public void setRoomByRoomId(Room roomByRoomId) {
         this.roomByRoomId = roomByRoomId;
     }
+
 }

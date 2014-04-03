@@ -11,6 +11,15 @@ public class DrugDiagnosisPK implements Serializable {
     private int idDrug;
     private int idDiagnosis;
 
+
+    public DrugDiagnosisPK(int idDrug, int idDiagnosis) {
+        this.idDrug = idDrug;
+        this.idDiagnosis = idDiagnosis;
+    }
+
+    public DrugDiagnosisPK() {
+    }
+
     @Column(name = "ID_DRUG")
     @Id
     public int getIdDrug() {

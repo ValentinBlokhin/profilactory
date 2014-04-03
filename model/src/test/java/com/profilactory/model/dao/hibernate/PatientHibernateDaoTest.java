@@ -1,9 +1,8 @@
 package com.profilactory.model.dao.hibernate;
 
 import com.profilactory.model.dao.databasefilter.DataBaseFilter;
-import com.profilactory.model.entity.Personal;
+import com.profilactory.model.entity.Patient;
 import org.hibernate.SessionFactory;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,69 +13,68 @@ import org.springframework.test.context.junit4.AbstractTransactionalJUnit4Spring
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 
-import java.util.List;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 /**
- * Created by ValentinBlokhin on 3/30/2014.
+ * Created by ValentinBlokhin on 4/2/2014.
  */
-
-@ContextConfiguration(locations = "classpath*:/dao/Personal/springconfig/personal-hibernate-config.xml")
+@ContextConfiguration(locations = "classpath:/dao/Patient/springconfig/patient-hibernate-config.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
 @TransactionConfiguration(defaultRollback = true, transactionManager = "transactionManager")
-public class PersonalHibernateDaoTest extends AbstractTransactionalJUnit4SpringContextTests {
+public class PatientHibernateDaoTest extends AbstractTransactionalJUnit4SpringContextTests {
+
     @Autowired
     @Qualifier("sessionFactory")
     private SessionFactory sessionFactory;
 
+    private PatientHibernateDao dao = new PatientHibernateDao();
+
     @Autowired
     private DataBaseFilter dataBaseFilter;
 
-    private PersonalHibernateDao personalHibernateDao = new PersonalHibernateDao();
-    ;
-
     @Before
     public void setUp() throws Exception {
-        personalHibernateDao.setSessionFactory(sessionFactory);
+        dao.setSessionFactory(sessionFactory);
         dataBaseFilter.fill();
-    }
-
-    @After
-    public void tearDown() throws Exception {
-
     }
 
     @Test
     public void testSaveOrUpdate() throws Exception {
-        Personal personal = new Personal();
-        personal.setPersonalId(3);
-        personal.setPost("pharmacist");
-        personal.setWorkTime("8:00 AM to 7:00 PM");
+        Patient patient = new Patient();
+        patient.setPatientId(3);
+        patient.setFirstName("Aleksandr");
+        patient.setSecondName("Kulakov");
+        patient.setMiddleName("Petrovich");
+        patient.setStudentId(55593345);
+        patient.setPermitId(1);
+        dao.saveOrUpdate(patient);
+        assertEquals(dao.getAll(0, 10).size(), 3);
     }
 
     @Test
     public void testDelete() throws Exception {
-        Personal personal = new Personal();
-        personal.setPersonalId(3);
-        personal.setPost("pharmacist");
-        personal.setWorkTime("8:00 AM to 7:00 PM");
-        personalHibernateDao.saveOrUpdate(personal);
-
-        assertEquals(personalHibernateDao.getAll(0, 10).size(), 3);
-        personalHibernateDao.delete(personal);
-        assertEquals(personalHibernateDao.getAll(0, 10).size(), 2);
+        Patient patient = new Patient();
+        patient.setPatientId(3);
+        patient.setFirstName("Aleksandr");
+        patient.setSecondName("Kulakov");
+        patient.setMiddleName("Petrovich");
+        patient.setStudentId(55593345);
+        patient.setPermitId(1);
+        dao.saveOrUpdate(patient);
+        assertEquals(dao.getAll(0, 10).size(), 3);
+        dao.delete(patient);
+        assertEquals(dao.getAll(0, 10).size(), 2);
     }
 
     @Test
     public void testGet() throws Exception {
-        assertNotNull(personalHibernateDao.get(1));
+        Patient patient = dao.get(1);
+        assertNotNull(patient);
     }
 
     @Test
     public void testGetAll() throws Exception {
-        List<Personal> personals = personalHibernateDao.getAll(0, 2);
-        assertEquals(personals.size(), 2);
+        assertEquals(dao.getAll(0, 10).size(), 2);
     }
 }

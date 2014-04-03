@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+
+    <table name="DRUG">
+        <column>drug_id</column>
+        <column>name</column>
+        <column>type</column>
+        <row>
+            <value>1</value>
+            <value>duovit</value>
+            <value>vitamins</value>
+        </row>
+        <row>
+            <value>2</value>
+            <value>vitrum</value>
+            <value>vitamins</value>
+        </row>
+    </table>
+
+    <table name="DIAGNOSIS">
+        <column>diagnosis_id</column>
+        <column>name</column>
+        <row>
+            <value>1</value>
+            <value>adjustment disorder</value>
+        </row>
+        <row>
+            <value>2</value>
+            <value>goiter</value>
+        </row>
+    </table>
+
+    <table name="DRUG_DIAGNOSIS">
+        <column>id_drug</column>
+        <column>id_diagnosis</column>
+        <row>
+            <value>1</value>
+            <value>1</value>
+        </row>
+        <row>
+            <value>1</value>
+            <value>2</value>
+        </row>
+    </table>
+    <table name="ROOM">
+        <column>room_id</column>
+        <column>room_number</column>
+        <column>seats</column>
+        <row>
+            <value>1</value>
+            <value>301</value>
+            <value>4</value>
+        </row>
+        <row>
+            <value>2</value>
+            <value>302</value>
+            <value>2</value>
+        </row>
+    </table>
+
+    <table name="PERMIT">
+        <column>PERMIT_ID</column>
+        <column>CHECK_IN</column>
+        <column>CHECK_OUT</column>
+        <column>ROOM_ID</column>
+        <row>
+            <value>1</value>
+            <value>2014-03-27 09:00:00</value>
+            <value>2014-04-27 09:00:00</value>
+            <value>1</value>
+        </row>
+        <row>
+            <value>2</value>
+            <value>2014-03-27 09:00:00</value>
+            <value>2014-04-27 09:00:00</value>
+            <value>1</value>
+        </row>
+    </table>
+    <table name="PATIENT">
+        <column>patient_id</column>
+        <column>first_name</column>
+        <column>middle_name</column>
+        <column>second_name</column>
+        <column>student_id</column>
+        <column>permit_id</column>
+        <row>
+            <value>1</value>
+            <value>Ivan</value>
+            <value>Alekseevich</value>
+            <value>Propan</value>
+            <value>94914938</value>
+            <value>1</value>
+        </row>
+        <row>
+            <value>2</value>
+            <value>Nikolay</value>
+            <value>Ivanov</value>
+            <value>Michaylovich</value>
+            <value>4457775</value>
+            <value>2</value>
+        </row>
+    </table>
+
+    <table name="CURRENT_PATIENT">
+        <column>current_patient_id</column>
+        <column>PATIENT_ID</column>
+        <column>DRUG_DIAGNOSIS_DRUG_ID</column>
+        <column>DRUG_DIAGNOSIS_DIAGNOSIS_ID</column>
+        <row>
+            <value>1</value>
+            <value>1</value>
+            <value>1</value>
+            <value>1</value>
+        </row>
+        <row>
+            <value>2</value>
+            <value>2</value>
+            <value>1</value>
+            <value>1</value>
+        </row>
+    </table>
+</dataset>

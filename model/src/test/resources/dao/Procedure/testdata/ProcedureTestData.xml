@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <table name="PROCEDURE">
+        <column>procedure_id</column>
+        <column>name</column>
+        <column>purpose</column>
+        <row>
+            <value>1</value>
+            <value>water shower</value>
+            <value>improvement of the nervous system</value>
+        </row>
+        <row>
+            <value>2</value>
+            <value>inhalation</value>
+            <value>cough</value>
+        </row>
+    </table>
+</dataset>

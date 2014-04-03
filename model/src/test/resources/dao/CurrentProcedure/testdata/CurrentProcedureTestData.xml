@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <table name="PERSONAL">
+        <column>personal_id</column>
+        <column>post</column>
+        <column>work_time</column>
+        <row>
+            <value>1</value>
+            <value>stomatologist</value>
+            <value>8:00 AM to 5:00 PM</value>
+        </row>
+        <row>
+            <value>2</value>
+            <value>masseur</value>
+            <value>1:00 PM to 4:00 PM</value>
+        </row>
+    </table>
+    <table name="CABINET">
+        <column>CABINET_ID</column>
+        <column>name</column>
+        <column>personal_id</column>
+        <row>
+            <value>1</value>
+            <value>Massager</value>
+            <value>1</value>
+        </row>
+        <row>
+            <value>2</value>
+            <value>test2</value>
+            <value>2</value>
+        </row>
+    </table>
+    <table name="PROCEDURE">
+        <column>procedure_id</column>
+        <column>name</column>
+        <column>purpose</column>
+        <row>
+            <value>1</value>
+            <value>water shower</value>
+            <value>improvement of the nervous system</value>
+        </row>
+        <row>
+            <value>2</value>
+            <value>inhalation</value>
+            <value>cough</value>
+        </row>
+    </table>
+    <table name="ROOM">
+        <column>room_id</column>
+        <column>room_number</column>
+        <column>seats</column>
+        <row>
+            <value>1</value>
+            <value>301</value>
+            <value>4</value>
+        </row>
+        <row>
+            <value>2</value>
+            <value>302</value>
+            <value>2</value>
+        </row>
+    </table>
+    <table name="PERMIT">
+        <column>PERMIT_ID</column>
+        <column>CHECK_IN</column>
+        <column>CHECK_OUT</column>
+        <column>ROOM_ID</column>
+        <row>
+            <value>1</value>
+            <value>2014-03-27 09:00:00</value>
+            <value>2014-04-27 09:00:00</value>
+            <value>1</value>
+        </row>
+        <row>
+            <value>2</value>
+            <value>2014-03-27 09:00:00</value>
+            <value>2014-04-27 09:00:00</value>
+            <value>1</value>
+        </row>
+    </table>
+    <table name="PATIENT">
+        <column>patient_id</column>
+        <column>first_name</column>
+        <column>middle_name</column>
+        <column>second_name</column>
+        <column>student_id</column>
+        <column>permit_id</column>
+        <row>
+            <value>1</value>
+            <value>Ivan</value>
+            <value>Alekseevich</value>
+            <value>Propan</value>
+            <value>94914938</value>
+            <value>1</value>
+        </row>
+        <row>
+            <value>2</value>
+            <value>Nikolay</value>
+            <value>Ivanov</value>
+            <value>Michaylovich</value>
+            <value>4457775</value>
+            <value>2</value>
+        </row>
+    </table>
+    <table name="CURRENT_PROCEDURE">
+        <column>CURRENT_PROCEDURE_ID</column>
+        <column>PATIENT_ID</column>
+        <column>PROCEDURE_ID</column>
+        <column>CABINET_ID</column>
+        <column>STATUS</column>
+        <row>
+            <value>1</value>
+            <value>1</value>
+            <value>1</value>
+            <value>1</value>
+            <value>passed</value>
+        </row>
+        <row>
+            <value>2</value>
+            <value>2</value>
+            <value>2</value>
+            <value>2</value>
+            <value>passes</value>
+        </row>
+    </table>
+</dataset>

@@ -9,7 +9,7 @@ import javax.persistence.*;
  * Created by ValentinBlokhin on 3/23/2014.
  */
 @Entity
-@Table(name = "CURRENT_PROCEDURE", schema = "VALENTIN", catalog = "")
+@Table(name = "CURRENT_PROCEDURE")
 public class CurrentProcedure {
     private int currentProcedureId;
     private int patientId;
@@ -21,7 +21,7 @@ public class CurrentProcedure {
     private Procedure procedureByProcedureId;
 
     @Id
-    @Column(name = "CURRENT_PROCEDURE_ID", nullable = false, insertable = false, updatable = false, precision = 0)
+    @Column(name = "CURRENT_PROCEDURE_ID", nullable = false, insertable = true, updatable = true, precision = 0)
     public int getCurrentProcedureId() {
         return currentProcedureId;
     }
@@ -31,7 +31,7 @@ public class CurrentProcedure {
     }
 
     @Basic
-    @Column(name = "PATIENT_ID", nullable = false, insertable = false, updatable = false, precision = 0)
+    @Column(name = "PATIENT_ID", nullable = false, insertable = true, updatable = true, precision = 0)
     public int getPatientId() {
         return patientId;
     }
@@ -41,7 +41,7 @@ public class CurrentProcedure {
     }
 
     @Basic
-    @Column(name = "PROCEDURE_ID", nullable = false, insertable = false, updatable = false, precision = 0)
+    @Column(name = "PROCEDURE_ID", nullable = false, insertable = true, updatable = true, precision = 0)
     public int getProcedureId() {
         return procedureId;
     }
@@ -51,7 +51,7 @@ public class CurrentProcedure {
     }
 
     @Basic
-    @Column(name = "CABINET_ID", nullable = false, insertable = false, updatable = false, precision = 0)
+    @Column(name = "CABINET_ID", nullable = false, insertable = true, updatable = true, precision = 0)
     public int getCabinetId() {
         return cabinetId;
     }
@@ -97,7 +97,7 @@ public class CurrentProcedure {
     }
 
     @ManyToOne
-    @JoinColumn(name = "CABINET_ID", referencedColumnName = "CABINET_ID", nullable = false)
+    @JoinColumn(name = "CABINET_ID", referencedColumnName = "CABINET_ID", nullable = false, insertable = false, updatable = false)
     public Cabinet getCabinetByCabinetId() {
         return cabinetByCabinetId;
     }
@@ -107,7 +107,7 @@ public class CurrentProcedure {
     }
 
     @ManyToOne
-    @JoinColumn(name = "PATIENT_ID", referencedColumnName = "PATIENT_ID", nullable = false)
+    @JoinColumn(name = "PATIENT_ID", referencedColumnName = "PATIENT_ID", nullable = false, insertable = false, updatable = false)
     public Patient getPatientByPatientId() {
         return patientByPatientId;
     }
@@ -117,7 +117,7 @@ public class CurrentProcedure {
     }
 
     @ManyToOne
-    @JoinColumn(name = "PROCEDURE_ID", referencedColumnName = "PROCEDURE_ID", nullable = false)
+    @JoinColumn(name = "PROCEDURE_ID", referencedColumnName = "PROCEDURE_ID", nullable = false, insertable = false, updatable = false)
     public Procedure getProcedureByProcedureId() {
         return procedureByProcedureId;
     }

@@ -6,7 +6,7 @@ import javax.persistence.*;
  * Created by ValentinBlokhin on 3/23/2014.
  */
 @Entity
-@Table(name = "CURRENT_PATIENT", schema = "VALENTIN", catalog = "")
+@Table(name = "CURRENT_PATIENT")
 public class CurrentPatient {
     private int currentPatientId;
     private int patientId;
@@ -26,7 +26,7 @@ public class CurrentPatient {
     }
 
     @Basic
-    @Column(name = "PATIENT_ID", nullable = false, insertable = false, updatable = false, precision = 0)
+    @Column(name = "PATIENT_ID", nullable = false, insertable = true, updatable = true, precision = 0)
     public int getPatientId() {
         return patientId;
     }
@@ -36,7 +36,7 @@ public class CurrentPatient {
     }
 
     @Basic
-    @Column(name = "DRUG_DIAGNOSIS_DRUG_ID", nullable = false, insertable = false, updatable = false, precision = 0)
+    @Column(name = "DRUG_DIAGNOSIS_DRUG_ID", nullable = false, insertable = true, updatable = true, precision = 0)
     public int getDrugDiagnosisDrugId() {
         return drugDiagnosisDrugId;
     }
@@ -46,7 +46,7 @@ public class CurrentPatient {
     }
 
     @Basic
-    @Column(name = "DRUG_DIAGNOSIS_DIAGNOSIS_ID", nullable = false, insertable = false, updatable = false, precision = 0)
+    @Column(name = "DRUG_DIAGNOSIS_DIAGNOSIS_ID", nullable = false, insertable = true, updatable = true, precision = 0)
     public int getDrugDiagnosisDiagnosisId() {
         return drugDiagnosisDiagnosisId;
     }
@@ -80,7 +80,7 @@ public class CurrentPatient {
     }
 
     @ManyToOne
-    @JoinColumns({@JoinColumn(name = "DRUG_DIAGNOSIS_DRUG_ID", referencedColumnName = "ID_DRUG", nullable = false), @JoinColumn(name = "DRUG_DIAGNOSIS_DIAGNOSIS_ID", referencedColumnName = "ID_DIAGNOSIS", nullable = false)})
+    @JoinColumns({@JoinColumn(name = "DRUG_DIAGNOSIS_DRUG_ID", referencedColumnName = "ID_DRUG", nullable = false, insertable = false, updatable = false), @JoinColumn(name = "DRUG_DIAGNOSIS_DIAGNOSIS_ID", referencedColumnName = "ID_DIAGNOSIS", nullable = false, insertable = false, updatable = false)})
     public DrugDiagnosis getDrugDiagnosis() {
         return drugDiagnosis;
     }
@@ -90,7 +90,7 @@ public class CurrentPatient {
     }
 
     @ManyToOne
-    @JoinColumn(name = "PATIENT_ID", referencedColumnName = "PATIENT_ID", nullable = false)
+    @JoinColumn(name = "PATIENT_ID", referencedColumnName = "PATIENT_ID", nullable = false, insertable = false, updatable = false)
     public Patient getPatientByPatientId() {
         return patientByPatientId;
     }

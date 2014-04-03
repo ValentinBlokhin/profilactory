@@ -1,7 +1,7 @@
 package com.profilactory.model.dao.hibernate;
 
 import com.profilactory.model.dao.databasefilter.DataBaseFilter;
-import com.profilactory.model.entity.Room;
+import com.profilactory.model.entity.Permit;
 import org.hibernate.SessionFactory;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,73 +13,65 @@ import org.springframework.test.context.junit4.AbstractTransactionalJUnit4Spring
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 
-import javax.sql.DataSource;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 import static org.junit.Assert.*;
 
 /**
- * Created by ValentinBlokhin on 3/28/2014.
+ * Created by ValentinBlokhin on 3/31/2014.
  */
-@ContextConfiguration(locations = "classpath*:/dao/Room/springconfig/room-hibernate-config.xml")
+@ContextConfiguration(locations = "classpath:dao/Permit/springconfig/permit-hibernate-config.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
 @TransactionConfiguration(defaultRollback = true, transactionManager = "transactionManager")
-public class RoomHibernateDaoTest extends AbstractTransactionalJUnit4SpringContextTests {
-
-    private RoomHibernateDao roomHibernateDao = new RoomHibernateDao();
-
-    @Autowired(required = true)
+public class PermitHibernateDaoTest extends AbstractTransactionalJUnit4SpringContextTests {
+    @Autowired
     @Qualifier("sessionFactory")
     private SessionFactory sessionFactory;
 
-    @Autowired
-    @Qualifier("dataSource")
-    private DataSource dataSource;
+    private PermitHibernateDao permitHibernateDao = new PermitHibernateDao();
 
     @Autowired
-    @Qualifier("dbFilter")
     private DataBaseFilter dataBaseFilter;
-
 
     @Before
     public void setUp() throws Exception {
-        roomHibernateDao.setSessionFactory(sessionFactory);
+        permitHibernateDao.setSessionFactory(sessionFactory);
         dataBaseFilter.fill();
     }
 
     @Test
     public void testSaveOrUpdate() throws Exception {
-        Room room = new Room();
-        room.setRoomId(3);
-        room.setRoomNumber(303);
-        room.setSeats(2);
+        Permit permit = new Permit();
+        permit.setPermitId(3);
+        Date date = new Date();
+        permit.setCheckIn(new Timestamp(date.getTime()));
+        permit.setCheckOut(new Timestamp(date.getTime()));
+        permit.setRoomId(2);
+        permitHibernateDao.saveOrUpdate(permit);
+        assertEquals(permitHibernateDao.getAll(0, 10).size(), 3);
 
-        roomHibernateDao.saveOrUpdate(room);
-        assertNotNull(roomHibernateDao.get(3));
-        assertEquals(room, roomHibernateDao.get(3));
     }
 
     @Test
     public void testDelete() throws Exception {
-        Room room = new Room();
-        room.setSeats(304);
-        room.setRoomNumber(3);
-        room.setRoomId(3);
-        roomHibernateDao.saveOrUpdate(room);
-        assertEquals(roomHibernateDao.get(3), room);
-        roomHibernateDao.delete(room);
-        assertEquals(roomHibernateDao.getAll(0, 2).size(), 2);
+        Permit permit = permitHibernateDao.get(1);
+        assertNotNull(permit);
+        permitHibernateDao.delete(permit);
+        assertEquals(permitHibernateDao.getAll(0, 3).size(), 1);
+
     }
 
     @Test
     public void testGet() throws Exception {
-        Room room = roomHibernateDao.get(1);
-        assertNotNull(room);
+        assertNotNull(permitHibernateDao.get(1));
     }
 
     @Test
     public void testGetAll() throws Exception {
-        List<Room> rooms = roomHibernateDao.getAll(0, 2);
-        assertFalse(rooms.isEmpty());
+        List<Permit> permits = permitHibernateDao.getAll(0, 2);
+        assertFalse(permits.isEmpty());
+        assertEquals(permits.size(), 2);
     }
 }

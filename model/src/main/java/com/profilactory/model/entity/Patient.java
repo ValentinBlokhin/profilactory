@@ -70,7 +70,7 @@ public class Patient {
     }
 
     @Basic
-    @Column(name = "PERMIT_ID", nullable = false, insertable = false, updatable = false, precision = 0)
+    @Column(name = "PERMIT_ID", nullable = false)
     public int getPermitId() {
         return permitId;
     }
@@ -126,7 +126,7 @@ public class Patient {
     }
 
     @ManyToOne
-    @JoinColumn(name = "PERMIT_ID", referencedColumnName = "PERMIT_ID", nullable = false)
+    @JoinColumn(name = "PERMIT_ID", referencedColumnName = "PERMIT_ID", nullable = false, insertable = false, updatable = false)
     public Permit getPermitByPermitId() {
         return permitByPermitId;
     }

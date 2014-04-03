@@ -7,7 +7,7 @@ import java.util.Collection;
  * Created by ValentinBlokhin on 3/23/2014.
  */
 @Entity
-@Table(name = "DRUG_DIAGNOSIS", schema = "VALENTIN", catalog = "")
+@Table(name = "DRUG_DIAGNOSIS")
 @IdClass(DrugDiagnosisPK.class)
 public class DrugDiagnosis {
     private int idDrug;

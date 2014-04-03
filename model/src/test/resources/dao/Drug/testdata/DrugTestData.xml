@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <table name="DRUG">
+        <column>drug_id</column>
+        <column>name</column>
+        <column>type</column>
+        <row>
+            <value>1</value>
+            <value>duovit</value>
+            <value>vitamins</value>
+        </row>
+        <row>
+            <value>2</value>
+            <value>vitrum</value>
+            <value>vitamins</value>
+        </row>
+    </table>
+</dataset>

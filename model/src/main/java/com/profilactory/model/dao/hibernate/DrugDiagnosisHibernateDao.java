@@ -1,6 +1,7 @@
 package com.profilactory.model.dao.hibernate;
 
 import com.profilactory.model.entity.DrugDiagnosis;
+import com.profilactory.model.entity.DrugDiagnosisPK;
 import org.hibernate.Query;
 
 import java.util.List;
@@ -21,7 +22,11 @@ public class DrugDiagnosisHibernateDao extends AbstractHibernateDao<DrugDiagnosi
 
     @Override
     public DrugDiagnosis get(Integer id) {
-        return (DrugDiagnosis) getSession().load(DrugDiagnosis.class, id);
+        return (DrugDiagnosis) getSession().load(DrugDiagnosis.class, new DrugDiagnosisPK(id, id));
+    }
+
+    public DrugDiagnosis getPK(Integer firstKey, Integer secondKey) {
+        return (DrugDiagnosis) getSession().load(DrugDiagnosis.class, new DrugDiagnosisPK(firstKey, secondKey));
     }
 
     @SuppressWarnings("unchecked")
@@ -30,6 +35,6 @@ public class DrugDiagnosisHibernateDao extends AbstractHibernateDao<DrugDiagnosi
         Query query = getSession().createQuery("from DrugDiagnosis");
         query.setFirstResult(pageNumber);
         query.setMaxResults(pageSize);
-        return query.list();
+        return (List<DrugDiagnosis>) query.list();
     }
 }
