@@ -1,7 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd   http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+    <bean id="exceptionTranslationInterceptor"
+          class="org.springframework.dao.support.PersistenceExceptionTranslationInterceptor"/>
+    <aop:config>
+        <aop:advisor advice-ref="exceptionTranslationInterceptor"
+                     pointcut="execution(public * com.profilactory.model.dao.Dao+.*(..))"/>
+    </aop:config>
+    <bean id="abstractHibernateDao" class="com.profilactory.model.dao.hibernate.AbstractHibernateDao" abstract="true">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean id="cabinetDao" class="com.profilactory.model.dao.hibernate.CabinetHibernateDao"
+          parent="abstractHibernateDao"/>
+    <bean id="currentPatientDao" class="com.profilactory.model.dao.hibernate.CurrentPatientHibernateDao"
+          parent="abstractHibernateDao"/>
+    <bean id="currentProcedureDao" class="com.profilactory.model.dao.hibernate.CurrentProcedureHibernateDao"
+          parent="abstractHibernateDao"/>
+    <bean id="diagnosisDao" class="com.profilactory.model.dao.hibernate.DiagnosisHibernateDao"
+          parent="abstractHibernateDao"/>
+    <bean id="drugDiagnosisDao" class="com.profilactory.model.dao.hibernate.DrugDiagnosisHibernateDao"
+          parent="abstractHibernateDao"/>
+    <bean id="drugDao" class="com.profilactory.model.dao.hibernate.DrugHibernateDao" parent="abstractHibernateDao"/>
+    <bean id="patientDao" class="com.profilactory.model.dao.hibernate.PatientHibernateDao"
+          parent="abstractHibernateDao"/>
+    <bean id="permitDao" class="com.profilactory.model.dao.hibernate.PermitHibernateDao" parent="abstractHibernateDao"/>
+    <bean id="personalDao" class="com.profilactory.model.dao.hibernate.PersonalHibernateDao"
+          parent="abstractHibernateDao"/>
+    <bean id="procedureDao" class="com.profilactory.model.dao.hibernate.ProcedureHibernateDao"
+          parent="abstractHibernateDao"/>
+    <bean id="roomDao" class="com.profilactory.model.dao.hibernate.RoomHibernateDao" parent="abstractHibernateDao"/>
+
+
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 
         <property name="driverClassName" value="${jdbc.driverClassName}"/>
