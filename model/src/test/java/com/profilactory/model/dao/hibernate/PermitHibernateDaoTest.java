@@ -49,9 +49,9 @@ public class PermitHibernateDaoTest extends AbstractTransactionalJUnit4SpringCon
         permit.setCheckIn(new Timestamp(date.getTime()));
         permit.setCheckOut(new Timestamp(date.getTime()));
         permit.setRoomId(2);
+        permit.setPatientId(1);
         permitHibernateDao.saveOrUpdate(permit);
         assertEquals(permitHibernateDao.getAll(0, 10).size(), 3);
-
     }
 
     @Test

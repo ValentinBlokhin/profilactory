@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Collection;
 
 /**
- * Created by ValentinBlokhin on 3/23/2014.
+ * Created by ValentinBlokhin on 4/16/2014.
  */
 @Entity
 public class Diagnosis {
@@ -13,7 +13,7 @@ public class Diagnosis {
     private Collection<DrugDiagnosis> drugDiagnosisesByDiagnosisId;
 
     @Id
-    @Column(name = "DIAGNOSIS_ID", nullable = false, insertable = true, updatable = true, precision = 0)
+    @Column(name = "DIAGNOSIS_ID")
     public int getDiagnosisId() {
         return diagnosisId;
     }
@@ -23,7 +23,7 @@ public class Diagnosis {
     }
 
     @Basic
-    @Column(name = "NAME", nullable = false, insertable = true, updatable = true, length = 30)
+    @Column(name = "NAME")
     public String getName() {
         return name;
     }

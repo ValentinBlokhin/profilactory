@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 import java.util.Collection;
 
 /**
- * Created by ValentinBlokhin on 3/23/2014.
+ * Created by ValentinBlokhin on 4/16/2014.
  */
 @Entity
 public class Permit {
@@ -13,11 +13,13 @@ public class Permit {
     private Timestamp checkIn;
     private Timestamp checkOut;
     private Integer roomId;
-    private Collection<Patient> patientsByPermitId;
+    private int patientId;
+    private Collection<CurrentProcedure> currentProceduresByPermitId;
+    private Patient patientByPatientId;
     private Room roomByRoomId;
 
     @Id
-    @Column(name = "PERMIT_ID", nullable = false, insertable = true, updatable = true, precision = 0)
+    @Column(name = "PERMIT_ID")
     public int getPermitId() {
         return permitId;
     }
@@ -27,7 +29,7 @@ public class Permit {
     }
 
     @Basic
-    @Column(name = "CHECK_IN", nullable = false, insertable = true, updatable = true)
+    @Column(name = "CHECK_IN")
     public Timestamp getCheckIn() {
         return checkIn;
     }
@@ -37,7 +39,7 @@ public class Permit {
     }
 
     @Basic
-    @Column(name = "CHECK_OUT", nullable = false, insertable = true, updatable = true)
+    @Column(name = "CHECK_OUT")
     public Timestamp getCheckOut() {
         return checkOut;
     }
@@ -47,13 +49,23 @@ public class Permit {
     }
 
     @Basic
-    @Column(name = "ROOM_ID", nullable = true, insertable = true, updatable = true, precision = 0)
+    @Column(name = "ROOM_ID")
     public Integer getRoomId() {
         return roomId;
     }
 
     public void setRoomId(Integer roomId) {
         this.roomId = roomId;
+    }
+
+    @Basic
+    @Column(name = "PATIENT_ID")
+    public int getPatientId() {
+        return patientId;
+    }
+
+    public void setPatientId(int patientId) {
+        this.patientId = patientId;
     }
 
     @Override
@@ -63,6 +75,7 @@ public class Permit {
 
         Permit permit = (Permit) o;
 
+        if (patientId != permit.patientId) return false;
         if (permitId != permit.permitId) return false;
         if (checkIn != null ? !checkIn.equals(permit.checkIn) : permit.checkIn != null) return false;
         if (checkOut != null ? !checkOut.equals(permit.checkOut) : permit.checkOut != null) return false;
@@ -77,16 +90,27 @@ public class Permit {
         result = 31 * result + (checkIn != null ? checkIn.hashCode() : 0);
         result = 31 * result + (checkOut != null ? checkOut.hashCode() : 0);
         result = 31 * result + (roomId != null ? roomId.hashCode() : 0);
+        result = 31 * result + patientId;
         return result;
     }
 
     @OneToMany(mappedBy = "permitByPermitId")
-    public Collection<Patient> getPatientsByPermitId() {
-        return patientsByPermitId;
+    public Collection<CurrentProcedure> getCurrentProceduresByPermitId() {
+        return currentProceduresByPermitId;
     }
 
-    public void setPatientsByPermitId(Collection<Patient> patientsByPermitId) {
-        this.patientsByPermitId = patientsByPermitId;
+    public void setCurrentProceduresByPermitId(Collection<CurrentProcedure> currentProceduresByPermitId) {
+        this.currentProceduresByPermitId = currentProceduresByPermitId;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "PATIENT_ID", referencedColumnName = "PATIENT_ID", nullable = false, insertable = false, updatable = false)
+    public Patient getPatientByPatientId() {
+        return patientByPatientId;
+    }
+
+    public void setPatientByPatientId(Patient patientByPatientId) {
+        this.patientByPatientId = patientByPatientId;
     }
 
     @ManyToOne
@@ -98,5 +122,4 @@ public class Permit {
     public void setRoomByRoomId(Room roomByRoomId) {
         this.roomByRoomId = roomByRoomId;
     }
-
 }

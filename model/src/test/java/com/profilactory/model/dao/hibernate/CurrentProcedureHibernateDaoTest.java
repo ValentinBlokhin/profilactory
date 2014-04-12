@@ -46,9 +46,9 @@ public class CurrentProcedureHibernateDaoTest extends AbstractTransactionalJUnit
         CurrentProcedure procedure = new CurrentProcedure();
         procedure.setCurrentProcedureId(3);
         procedure.setProcedureId(1);
-        procedure.setPatientId(1);
         procedure.setCabinetId(1);
         procedure.setStatus("passed");
+        procedure.setPermitId(2);
         dao.saveOrUpdate(procedure);
         assertEquals(dao.getAll(0, 10).size(), 3);
     }
@@ -56,11 +56,11 @@ public class CurrentProcedureHibernateDaoTest extends AbstractTransactionalJUnit
     @Test
     public void testDelete() throws Exception {
         CurrentProcedure procedure = new CurrentProcedure();
-        procedure.setPatientId(1);
         procedure.setCurrentProcedureId(3);
         procedure.setCabinetId(1);
         procedure.setStatus("passed");
         procedure.setProcedureId(1);
+        procedure.setPermitId(1);
         dao.saveOrUpdate(procedure);
         assertEquals(dao.getAll(0, 10).size(), 3);
         dao.delete(procedure);

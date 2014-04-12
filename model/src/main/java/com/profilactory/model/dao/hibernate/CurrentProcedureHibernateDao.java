@@ -2,12 +2,14 @@ package com.profilactory.model.dao.hibernate;
 
 import com.profilactory.model.entity.CurrentProcedure;
 import org.hibernate.Query;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 /**
  * Created by ValentinBlokhin on 3/26/2014.
  */
+@Component
 public class CurrentProcedureHibernateDao extends AbstractHibernateDao<CurrentProcedure> {
     @Override
     public void saveOrUpdate(CurrentProcedure persistence) {

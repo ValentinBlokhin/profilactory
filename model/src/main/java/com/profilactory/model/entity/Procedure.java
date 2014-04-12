@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Collection;
 
 /**
- * Created by ValentinBlokhin on 3/23/2014.
+ * Created by ValentinBlokhin on 4/16/2014.
  */
 @Entity
 public class Procedure {
@@ -14,7 +14,7 @@ public class Procedure {
     private Collection<CurrentProcedure> currentProceduresByProcedureId;
 
     @Id
-    @Column(name = "PROCEDURE_ID", nullable = false, insertable = true, updatable = true, precision = 0)
+    @Column(name = "PROCEDURE_ID")
     public int getProcedureId() {
         return procedureId;
     }
@@ -24,7 +24,7 @@ public class Procedure {
     }
 
     @Basic
-    @Column(name = "NAME", nullable = false, insertable = true, updatable = true, length = 30)
+    @Column(name = "NAME")
     public String getName() {
         return name;
     }
@@ -34,7 +34,7 @@ public class Procedure {
     }
 
     @Basic
-    @Column(name = "PURPOSE", nullable = false, insertable = true, updatable = true, length = 50)
+    @Column(name = "PURPOSE")
     public String getPurpose() {
         return purpose;
     }

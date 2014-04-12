@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="4202463821">
+    <data-source source="LOCAL" name="Oracle - xe@localhost" uuid="1396e6be-42e8-4df6-b99e-a3937f1cd42b">
+      <driver-ref>oracle</driver-ref>
+      <jdbc-driver>oracle.jdbc.OracleDriver</jdbc-driver>
+      <jdbc-url>jdbc:oracle:thin:@//localhost:1521/xe</jdbc-url>
+      <user-name>system</user-name>
+      <user-password>dfd9dfd3dfd9dfdedfcfdfc7</user-password>
+      <schema-pattern>*.VALENTIN</schema-pattern>
+      <default-schemas>*.VALENTIN</default-schemas>
+      <libraries>
+        <library>
+          <url>file://$MAVEN_REPOSITORY$/com/oracle/ojdbc6/11.2.0/ojdbc6-11.2.0.jar</url>
+        </library>
+      </libraries>
+    </data-source>
+  </component>
+</project>
+

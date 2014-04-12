@@ -3,12 +3,14 @@ package com.profilactory.model.dao.hibernate;
 import com.profilactory.model.entity.DrugDiagnosis;
 import com.profilactory.model.entity.DrugDiagnosisPK;
 import org.hibernate.Query;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 /**
  * Created by ValentinBlokhin on 3/26/2014.
  */
+@Component
 public class DrugDiagnosisHibernateDao extends AbstractHibernateDao<DrugDiagnosis> {
     @Override
     public void saveOrUpdate(DrugDiagnosis persistence) {

@@ -5,12 +5,11 @@ import javax.persistence.Id;
 import java.io.Serializable;
 
 /**
- * Created by ValentinBlokhin on 3/23/2014.
+ * Created by ValentinBlokhin on 4/16/2014.
  */
 public class DrugDiagnosisPK implements Serializable {
     private int idDrug;
     private int idDiagnosis;
-
 
     public DrugDiagnosisPK(int idDrug, int idDiagnosis) {
         this.idDrug = idDrug;

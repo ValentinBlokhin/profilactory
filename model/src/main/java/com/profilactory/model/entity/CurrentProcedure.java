@@ -1,27 +1,24 @@
 package com.profilactory.model.entity;
 
-
 import javax.persistence.*;
 
-;
-
 /**
- * Created by ValentinBlokhin on 3/23/2014.
+ * Created by ValentinBlokhin on 4/16/2014.
  */
 @Entity
 @Table(name = "CURRENT_PROCEDURE")
 public class CurrentProcedure {
     private int currentProcedureId;
-    private int patientId;
     private int procedureId;
     private int cabinetId;
     private String status;
+    private int permitId;
     private Cabinet cabinetByCabinetId;
-    private Patient patientByPatientId;
+    private Permit permitByPermitId;
     private Procedure procedureByProcedureId;
 
     @Id
-    @Column(name = "CURRENT_PROCEDURE_ID", nullable = false, insertable = true, updatable = true, precision = 0)
+    @Column(name = "CURRENT_PROCEDURE_ID")
     public int getCurrentProcedureId() {
         return currentProcedureId;
     }
@@ -31,17 +28,7 @@ public class CurrentProcedure {
     }
 
     @Basic
-    @Column(name = "PATIENT_ID", nullable = false, insertable = true, updatable = true, precision = 0)
-    public int getPatientId() {
-        return patientId;
-    }
-
-    public void setPatientId(int patientId) {
-        this.patientId = patientId;
-    }
-
-    @Basic
-    @Column(name = "PROCEDURE_ID", nullable = false, insertable = true, updatable = true, precision = 0)
+    @Column(name = "PROCEDURE_ID")
     public int getProcedureId() {
         return procedureId;
     }
@@ -51,7 +38,7 @@ public class CurrentProcedure {
     }
 
     @Basic
-    @Column(name = "CABINET_ID", nullable = false, insertable = true, updatable = true, precision = 0)
+    @Column(name = "CABINET_ID")
     public int getCabinetId() {
         return cabinetId;
     }
@@ -61,13 +48,23 @@ public class CurrentProcedure {
     }
 
     @Basic
-    @Column(name = "STATUS", nullable = true, insertable = true, updatable = true, length = 20)
+    @Column(name = "STATUS")
     public String getStatus() {
         return status;
     }
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    @Basic
+    @Column(name = "PERMIT_ID")
+    public int getPermitId() {
+        return permitId;
+    }
+
+    public void setPermitId(int permitId) {
+        this.permitId = permitId;
     }
 
     @Override
@@ -79,7 +76,7 @@ public class CurrentProcedure {
 
         if (cabinetId != that.cabinetId) return false;
         if (currentProcedureId != that.currentProcedureId) return false;
-        if (patientId != that.patientId) return false;
+        if (permitId != that.permitId) return false;
         if (procedureId != that.procedureId) return false;
         if (status != null ? !status.equals(that.status) : that.status != null) return false;
 
@@ -89,10 +86,10 @@ public class CurrentProcedure {
     @Override
     public int hashCode() {
         int result = currentProcedureId;
-        result = 31 * result + patientId;
         result = 31 * result + procedureId;
         result = 31 * result + cabinetId;
         result = 31 * result + (status != null ? status.hashCode() : 0);
+        result = 31 * result + permitId;
         return result;
     }
 
@@ -107,13 +104,13 @@ public class CurrentProcedure {
     }
 
     @ManyToOne
-    @JoinColumn(name = "PATIENT_ID", referencedColumnName = "PATIENT_ID", nullable = false, insertable = false, updatable = false)
-    public Patient getPatientByPatientId() {
-        return patientByPatientId;
+    @JoinColumn(name = "PERMIT_ID", referencedColumnName = "PERMIT_ID", nullable = false, insertable = false, updatable = false)
+    public Permit getPermitByPermitId() {
+        return permitByPermitId;
     }
 
-    public void setPatientByPatientId(Patient patientByPatientId) {
-        this.patientByPatientId = patientByPatientId;
+    public void setPermitByPermitId(Permit permitByPermitId) {
+        this.permitByPermitId = permitByPermitId;
     }
 
     @ManyToOne

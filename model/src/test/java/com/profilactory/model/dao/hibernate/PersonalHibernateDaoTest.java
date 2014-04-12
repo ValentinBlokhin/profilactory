@@ -52,16 +52,16 @@ public class PersonalHibernateDaoTest extends AbstractTransactionalJUnit4SpringC
     public void testSaveOrUpdate() throws Exception {
         Personal personal = new Personal();
         personal.setPersonalId(3);
-        personal.setPost("pharmacist");
         personal.setWorkTime("8:00 AM to 7:00 PM");
+        personal.setPostId(2);
     }
 
     @Test
     public void testDelete() throws Exception {
         Personal personal = new Personal();
         personal.setPersonalId(3);
-        personal.setPost("pharmacist");
         personal.setWorkTime("8:00 AM to 7:00 PM");
+        personal.setPostId(1);
         personalHibernateDao.saveOrUpdate(personal);
 
         assertEquals(personalHibernateDao.getAll(0, 10).size(), 3);

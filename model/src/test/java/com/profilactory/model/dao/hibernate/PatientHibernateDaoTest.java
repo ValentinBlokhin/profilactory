@@ -47,7 +47,6 @@ public class PatientHibernateDaoTest extends AbstractTransactionalJUnit4SpringCo
         patient.setSecondName("Kulakov");
         patient.setMiddleName("Petrovich");
         patient.setStudentId(55593345);
-        patient.setPermitId(1);
         dao.saveOrUpdate(patient);
         assertEquals(dao.getAll(0, 10).size(), 3);
     }
@@ -60,7 +59,6 @@ public class PatientHibernateDaoTest extends AbstractTransactionalJUnit4SpringCo
         patient.setSecondName("Kulakov");
         patient.setMiddleName("Petrovich");
         patient.setStudentId(55593345);
-        patient.setPermitId(1);
         dao.saveOrUpdate(patient);
         assertEquals(dao.getAll(0, 10).size(), 3);
         dao.delete(patient);

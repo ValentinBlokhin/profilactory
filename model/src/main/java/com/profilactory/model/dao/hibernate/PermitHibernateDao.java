@@ -2,12 +2,14 @@ package com.profilactory.model.dao.hibernate;
 
 import com.profilactory.model.entity.Permit;
 import org.hibernate.Query;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 /**
  * Created by ValentinBlokhin on 3/26/2014.
  */
+@Component
 public class PermitHibernateDao extends AbstractHibernateDao<Permit> {
     @Override
     public void saveOrUpdate(Permit persistence) {

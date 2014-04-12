@@ -1,0 +1,119 @@
+.col-md-3 {
+    background: #cccccc;
+}
+
+.col-md-9 {
+    background: #ffff00;
+}
+
+.header {
+    background: url("../../resources/images/head_bg.png") repeat-x;
+    width: 100%;
+    height: 288px;
+}
+
+.logo-img {
+    margin: 65px 0 0 30px;
+}
+
+.nav-pos {
+    margin-top: 115px;
+}
+
+.nav-pos li a {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #35b3c6;
+}
+
+.nav-pos li a:hover {
+    background: #EAF8FB;
+}
+
+.middle-container {
+    background: url("../../resources/images/middle-container_bg.png");
+    height: 850px;
+    margin-left: -13px;
+}
+
+.middle-logo-left {
+    margin-top: 39px;
+    margin-left: -12px;
+}
+
+.middle-logo-right {
+    margin-top: 39px;
+    padding-left: 5px;
+}
+
+.sign-block {
+    margin-top: 39px;
+    border: 1px solid #BDEAF1;
+}
+
+.sign-block-left_side {
+
+    padding: 50px;
+    color: #67d0e0;
+    font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
+    font-size: 85px;
+    line-height: 85px;
+    letter-spacing: -5px;
+    text-transform: uppercase;
+}
+
+.sign-block-left_side span {
+    font-size: 25px;
+    letter-spacing: normal;
+    padding-left: 0;
+    margin-left: 100px;
+    line-height: 36px;
+    display: block;
+    font-weight: 300;
+}
+
+.sign-block-right_side {
+
+}
+
+.sign-block-right_side-button {
+    margin-top: 53px;
+    margin-right: 73px;
+    float: right;
+}
+
+.sign-block-right_side-button a {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background: #67E0CE;
+    float: right;
+    padding: 27px 36px 25px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 26px;
+    display: block;
+    border-radius: 5px;
+    box-shadow: 2px 3px 6px #cfdadc;
+    color: #ffffff;
+    transition: All 0.5s ease;
+}
+
+.sign-block-right_side-button a:hover {
+    background: #8bdbe7;
+    color: #ffffff;
+}
+
+.footer {
+    height: 98px;
+    background: url("../../resources/images/footer.png") repeat-x;
+    margin-left: 2px;
+}
+
+.footer-left {
+    padding: 30px;
+    color: #E5F5F8;
+}
+
+.footer-right {
+    padding: 30px;
+    color: #E5F5F8;
+    float: right;
+}

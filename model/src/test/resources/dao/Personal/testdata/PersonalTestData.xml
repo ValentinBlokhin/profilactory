@@ -1,18 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
-    <table name="PERSONAL">
-        <column>personal_id</column>
-        <column>post</column>
-        <column>work_time</column>
+    <table name="POST">
+        <column>POST_ID</column>
+        <column>NAME</column>
         <row>
             <value>1</value>
             <value>stomatologist</value>
-            <value>8:00 AM to 5:00 PM</value>
         </row>
         <row>
             <value>2</value>
             <value>masseur</value>
+        </row>
+    </table>
+
+    <table name="PERSONAL">
+        <column>personal_id</column>
+        <column>WORK_TIME</column>
+        <column>POST_ID</column>
+        <row>
+            <value>1</value>
+            <value>8:00 AM to 5:00 PM</value>
+            <value>1</value>
+        </row>
+        <row>
+            <value>2</value>
             <value>1:00 PM to 4:00 PM</value>
+            <value>2</value>
         </row>
     </table>
 </dataset>

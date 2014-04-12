@@ -2,12 +2,14 @@ package com.profilactory.model.dao.hibernate;
 
 import com.profilactory.model.entity.Cabinet;
 import org.hibernate.Query;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 /**
  * Created by ValentinBlokhin on 3/25/2014.
  */
+@Component
 public class CabinetHibernateDao extends AbstractHibernateDao<Cabinet> {
 
     @Override

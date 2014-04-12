@@ -4,6 +4,7 @@ import com.profilactory.model.dao.Dao;
 import com.profilactory.model.entity.Permit;
 import com.profilactory.service.EntityService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +16,7 @@ import java.util.List;
 public class TransactionalPermitService implements EntityService<Permit> {
 
     @Autowired
+    @Qualifier("permitHibernateDao")
     Dao<Permit> permitDao;
 
     @Override

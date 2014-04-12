@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Collection;
 
 /**
- * Created by ValentinBlokhin on 3/23/2014.
+ * Created by ValentinBlokhin on 4/16/2014.
  */
 @Entity
 public class Room {
@@ -14,7 +14,7 @@ public class Room {
     private Collection<Permit> permitsByRoomId;
 
     @Id
-    @Column(name = "ROOM_ID", nullable = false, insertable = true, updatable = true, precision = 0)
+    @Column(name = "ROOM_ID")
     public int getRoomId() {
         return roomId;
     }
@@ -24,7 +24,7 @@ public class Room {
     }
 
     @Basic
-    @Column(name = "ROOM_NUMBER", nullable = false, insertable = true, updatable = true, precision = 0)
+    @Column(name = "ROOM_NUMBER")
     public int getRoomNumber() {
         return roomNumber;
     }
@@ -34,7 +34,7 @@ public class Room {
     }
 
     @Basic
-    @Column(name = "SEATS", nullable = false, insertable = true, updatable = true, precision = 0)
+    @Column(name = "SEATS")
     public int getSeats() {
         return seats;
     }

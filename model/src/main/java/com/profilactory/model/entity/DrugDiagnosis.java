@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Collection;
 
 /**
- * Created by ValentinBlokhin on 3/23/2014.
+ * Created by ValentinBlokhin on 4/16/2014.
  */
 @Entity
 @Table(name = "DRUG_DIAGNOSIS")
@@ -66,7 +66,7 @@ public class DrugDiagnosis {
     }
 
     @ManyToOne
-    @JoinColumn(name = "ID_DIAGNOSIS", referencedColumnName = "DIAGNOSIS_ID", insertable = false, updatable = false)
+    @JoinColumn(name = "ID_DIAGNOSIS", referencedColumnName = "DIAGNOSIS_ID", nullable = false, insertable = false, updatable = false)
     public Diagnosis getDiagnosisByIdDiagnosis() {
         return diagnosisByIdDiagnosis;
     }
@@ -76,7 +76,7 @@ public class DrugDiagnosis {
     }
 
     @ManyToOne
-    @JoinColumn(name = "ID_DRUG", referencedColumnName = "DRUG_ID", insertable = false, updatable = false)
+    @JoinColumn(name = "ID_DRUG", referencedColumnName = "DRUG_ID", nullable = false, insertable = false, updatable = false)
     public Drug getDrugByIdDrug() {
         return drugByIdDrug;
     }

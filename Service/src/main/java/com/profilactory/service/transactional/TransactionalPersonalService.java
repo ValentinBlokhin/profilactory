@@ -4,6 +4,7 @@ import com.profilactory.model.dao.Dao;
 import com.profilactory.model.entity.Personal;
 import com.profilactory.service.EntityService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.List;
 @Service("PersonalService")
 public class TransactionalPersonalService implements EntityService<Personal> {
     @Autowired
+    @Qualifier("personalHibernateDao")
     Dao<Personal> personalDao;
 
     @Override

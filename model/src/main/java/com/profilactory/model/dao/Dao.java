@@ -1,5 +1,7 @@
 package com.profilactory.model.dao;
 
+import org.springframework.test.context.transaction.TransactionConfiguration;
+
 import javax.transaction.Transactional;
 import java.util.List;
 
