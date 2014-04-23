@@ -1,0 +1,10 @@
+.header {
+    border: 1px solid #000;
+    height: 49px;
+    background: #c4e3f3;
+    width: 100%;
+}
+
+.content-nav {
+    margin-top: 5px;
+}

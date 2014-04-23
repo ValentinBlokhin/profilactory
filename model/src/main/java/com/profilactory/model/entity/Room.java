@@ -13,6 +13,16 @@ public class Room {
     private int seats;
     private Collection<Permit> permitsByRoomId;
 
+
+    public Room(int roomId, int roomNumber, int seats) {
+        this.roomId = roomId;
+        this.roomNumber = roomNumber;
+        this.seats = seats;
+    }
+
+    public Room() {
+    }
+
     @Id
     @Column(name = "ROOM_ID")
     public int getRoomId() {
