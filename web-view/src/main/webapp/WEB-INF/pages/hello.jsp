@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: ValentinBlokhin
@@ -10,7 +11,9 @@
 <head>
     <title></title>
 </head>
-Message: ${message}
+<c:forEach items="${list}" var="myList">
+    <c:out value="${myList.name}"/>
+</c:forEach>
 <body>
 
 </body>
