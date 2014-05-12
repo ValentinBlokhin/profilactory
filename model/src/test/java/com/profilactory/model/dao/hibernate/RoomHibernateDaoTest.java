@@ -62,8 +62,8 @@ public class RoomHibernateDaoTest extends AbstractTransactionalJUnit4SpringConte
     @Test
     public void testDelete() throws Exception {
         Room room = new Room();
-        room.setSeats(304);
-        room.setRoomNumber(3);
+        room.setSeats(4);
+        room.setRoomNumber(304);
         room.setRoomId(3);
         roomHibernateDao.saveOrUpdate(room);
         assertEquals(roomHibernateDao.get(3), room);

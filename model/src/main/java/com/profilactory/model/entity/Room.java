@@ -1,6 +1,11 @@
 package com.profilactory.model.entity;
 
+import org.hibernate.validator.constraints.Range;
+
 import javax.persistence.*;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.util.Collection;
 
 /**
@@ -8,8 +13,16 @@ import java.util.Collection;
  */
 @Entity
 public class Room {
+
     private int roomId;
+    @NotNull
+    @Range(min = 1)
+    //@Pattern(regexp = "\\d+")
     private int roomNumber;
+
+    @NotNull
+    //@Pattern(regexp = "\\d+")
+    @Range(min = 1, max = 4)
     private int seats;
     private Collection<Permit> permitsByRoomId;
 
