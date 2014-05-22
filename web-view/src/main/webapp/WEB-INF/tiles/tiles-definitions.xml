@@ -17,4 +17,12 @@
         <put-attribute name="current" value="manage/addRoom"/>
     </definition>
 
+    <definition name="manage/personal" extends="defaultTemplate">
+        <put-attribute name="current" value="manage/personal"/>
+    </definition>
+
+    <definition name="manage/post" extends="defaultTemplate">
+        <put-attribute name="current" value="manage/post"/>
+    </definition>
+
 </tiles-definitions>

@@ -12,8 +12,13 @@ import java.util.List;
 @Component
 public class DrugHibernateDao extends AbstractHibernateDao<Drug> {
     @Override
-    public void saveOrUpdate(Drug persistence) {
+    public void save(Drug persistence) {
         getSession().save(persistence);
+    }
+
+    @Override
+    public void update(Drug persistence) {
+        getSession().update(persistence);
     }
 
 
@@ -34,5 +39,10 @@ public class DrugHibernateDao extends AbstractHibernateDao<Drug> {
         query.setFirstResult(pageNumber);
         query.setMaxResults(pageSize);
         return query.list();
+    }
+
+    @Override
+    public List<Drug> findByCriteria(Object obj) {
+        return null;
     }
 }

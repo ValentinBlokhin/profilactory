@@ -7,12 +7,16 @@ import java.util.List;
  */
 public interface EntityService<T> {
 
-    void saveOrUpdate(T persistence);
+    void save(T persistence);
+
+    void update(T persistence);
 
     void delete(T persistence);
 
     T get(Integer id);
 
     List<T> getAll(int pageNumber, int pageSize);
+
+    List<T> findByCriteria(Object obj);
 
 }

@@ -21,12 +21,12 @@ body {
     padding-top: 10px;
 }
 
-.padding-form {
-    padding-top: 15px;
+.padding-button {
+    margin-bottom: 5px;
 }
 
 .table-style {
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 .modal-body-pad {
@@ -39,6 +39,10 @@ body {
 
 .form-error-text {
     margin-top: 12px;
+}
+
+.check-unique-error {
+    color: red;
 }
 
 /* make sidebar nav vertical */
@@ -65,3 +69,6 @@ body {
 }
 
 /* ~content*/
+
+
+

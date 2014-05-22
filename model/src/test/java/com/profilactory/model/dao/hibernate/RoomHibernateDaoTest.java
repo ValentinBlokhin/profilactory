@@ -48,13 +48,14 @@ public class RoomHibernateDaoTest extends AbstractTransactionalJUnit4SpringConte
     }
 
     @Test
-    public void testSaveOrUpdate() throws Exception {
+    public void testSave() throws Exception {
         Room room = new Room();
         room.setRoomId(3);
-        room.setRoomNumber(303);
+        room.setRoomNumber(315);
         room.setSeats(2);
+        room.setBusySeats(3);
 
-        roomHibernateDao.saveOrUpdate(room);
+        roomHibernateDao.save(room);
         assertNotNull(roomHibernateDao.get(3));
         assertEquals(room, roomHibernateDao.get(3));
     }
@@ -63,9 +64,10 @@ public class RoomHibernateDaoTest extends AbstractTransactionalJUnit4SpringConte
     public void testDelete() throws Exception {
         Room room = new Room();
         room.setSeats(4);
-        room.setRoomNumber(304);
+        room.setRoomNumber(315);
         room.setRoomId(3);
-        roomHibernateDao.saveOrUpdate(room);
+        room.setBusySeats(3);
+        roomHibernateDao.save(room);
         assertEquals(roomHibernateDao.get(3), room);
         roomHibernateDao.delete(room);
         assertEquals(roomHibernateDao.getAll(0, 2).size(), 2);

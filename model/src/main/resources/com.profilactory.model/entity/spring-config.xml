@@ -2,7 +2,8 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd   http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd   http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
     <bean id="exceptionTranslationInterceptor"
           class="org.springframework.dao.support.PersistenceExceptionTranslationInterceptor"/>
     <aop:config>
@@ -10,21 +11,18 @@
                      pointcut="execution(public * com.profilactory.model.dao.Dao+.*(..))"/>
     </aop:config>
 
-    <bean id="dataSource" class="org.springframework.jdbc.datasource.LazyConnectionDataSourceProxy">
-        <property name="targetDataSource">
-            <bean class="oracle.jdbc.pool.OracleDataSource">
-                <property name="URL" value="${jdbc.url}"/>
-                <property name="user" value="${jdbc.username}"/>
-                <property name="password" value="${jdbc.password}"/>
-                <property name="connectionProperties">
-                    <props merge="default">
-                        <prop key="MinLimit">3</prop>
-                        <prop key="MaxLimit">20</prop>
-                    </props>
-                </property>
-            </bean>
+    <bean id="dataSource" class="oracle.jdbc.pool.OracleDataSource">
+        <property name="URL" value="${jdbc.url}"/>
+        <property name="user" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+        <property name="connectionProperties">
+            <props merge="default">
+                <prop key="MinLimit">3</prop>
+                <prop key="MaxLimit">20</prop>
+            </props>
         </property>
     </bean>
+
 
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>

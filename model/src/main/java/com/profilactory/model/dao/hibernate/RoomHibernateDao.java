@@ -3,17 +3,26 @@ package com.profilactory.model.dao.hibernate;
 import com.profilactory.model.entity.Room;
 import org.hibernate.Query;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 /**
  * Created by ValentinBlokhin on 3/26/2014.
  */
+
 @Component
 public class RoomHibernateDao extends AbstractHibernateDao<Room> {
+
     @Override
-    public void saveOrUpdate(Room persistence) {
+    public void save(Room persistence) {
         getSession().save(persistence);
+    }
+
+    @Override
+    public void update(Room persistence) {
+        getSession().update(persistence);
     }
 
 
@@ -35,4 +44,13 @@ public class RoomHibernateDao extends AbstractHibernateDao<Room> {
         query.setMaxResults(pageSize);
         return query.list();
     }
+
+    @Override
+    public List<Room> findByCriteria(Object obj) {
+        Query query = getSession().createQuery("from Room where roomNumber = " + obj);
+
+        return query.list();
+    }
+
+
 }

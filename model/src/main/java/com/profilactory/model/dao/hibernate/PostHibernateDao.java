@@ -13,8 +13,13 @@ import java.util.List;
 @Component
 public class PostHibernateDao extends AbstractHibernateDao<Post> {
     @Override
-    public void saveOrUpdate(Post persistence) {
+    public void save(Post persistence) {
         getSession().saveOrUpdate(persistence);
+    }
+
+    @Override
+    public void update(Post persistence) {
+        getSession().update(persistence);
     }
 
     @Override
@@ -35,5 +40,10 @@ public class PostHibernateDao extends AbstractHibernateDao<Post> {
         query.setFirstResult(pageNumber);
         query.setMaxResults(pageSize);
         return query.list();
+    }
+
+    @Override
+    public List<Post> findByCriteria(Object obj) {
+        return null;
     }
 }

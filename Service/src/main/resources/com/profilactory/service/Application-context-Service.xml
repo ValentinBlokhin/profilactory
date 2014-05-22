@@ -6,8 +6,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:component-scan base-package="com.profilactory.service.transactional"/>
-    <context:component-scan base-package="com.profilactory.service.validation"/>
-    <context:component-scan base-package="com.profilactory.model.dao.hibernate"/>
+    <context:component-scan base-package="com.profilactory.model"/>
 
     <aop:config>
         <aop:pointcut id="defaultTxPointcut" expression="within(com.profilactory.service.transactional..*)"/>
@@ -16,7 +15,7 @@
 
     <tx:advice id="TxAdvice">
         <tx:attributes>
-            <tx:method name="get*" rollback-for="java.lang.Exception" read-only="true"/>
+            <tx:method name="get*" rollback-for="java.lang.Exception"/>
             <tx:method name="save*" rollback-for="java.lang.Exception"/>
             <tx:method name="delete*" rollback-for="java.lang.Exception"/>
         </tx:attributes>

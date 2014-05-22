@@ -13,13 +13,13 @@ import org.springframework.transaction.annotation.Transactional;
  */
 
 @Repository
-@Transactional
 public abstract class AbstractHibernateDao<T> implements Dao<T> {
 
 
     @Autowired
     @Qualifier("sessionFactory")
     private SessionFactory sessionFactory;
+
 
     protected Session getSession() {
         return sessionFactory.getCurrentSession();

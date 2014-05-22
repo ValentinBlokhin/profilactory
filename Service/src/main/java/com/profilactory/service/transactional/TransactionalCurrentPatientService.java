@@ -20,8 +20,13 @@ public class TransactionalCurrentPatientService implements EntityService<Current
     Dao<CurrentPatient> currentPatientDao;
 
     @Override
-    public void saveOrUpdate(CurrentPatient persistence) {
-        currentPatientDao.saveOrUpdate(persistence);
+    public void save(CurrentPatient persistence) {
+        currentPatientDao.save(persistence);
+    }
+
+    @Override
+    public void update(CurrentPatient persistence) {
+        currentPatientDao.update(persistence);
     }
 
     @Override
@@ -37,5 +42,10 @@ public class TransactionalCurrentPatientService implements EntityService<Current
     @Override
     public List<CurrentPatient> getAll(int pageNumber, int pageSize) {
         return currentPatientDao.getAll(pageNumber, pageSize);
+    }
+
+    @Override
+    public List<CurrentPatient> findByCriteria(Object obj) {
+        return null;
     }
 }

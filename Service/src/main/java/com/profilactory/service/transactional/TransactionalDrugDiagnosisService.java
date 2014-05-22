@@ -22,8 +22,13 @@ public class TransactionalDrugDiagnosisService implements EntityService<DrugDiag
     Dao<DrugDiagnosis> dao;
 
     @Override
-    public void saveOrUpdate(DrugDiagnosis persistence) {
-        dao.saveOrUpdate(persistence);
+    public void save(DrugDiagnosis persistence) {
+        dao.save(persistence);
+    }
+
+    @Override
+    public void update(DrugDiagnosis persistence) {
+        dao.update(persistence);
     }
 
     @Override
@@ -44,5 +49,10 @@ public class TransactionalDrugDiagnosisService implements EntityService<DrugDiag
     @Override
     public List<DrugDiagnosis> getAll(int pageNumber, int pageSize) {
         return dao.getAll(pageNumber, pageSize);
+    }
+
+    @Override
+    public List<DrugDiagnosis> findByCriteria(Object obj) {
+        return null;
     }
 }

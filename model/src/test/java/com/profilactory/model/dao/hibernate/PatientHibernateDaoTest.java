@@ -40,14 +40,14 @@ public class PatientHibernateDaoTest extends AbstractTransactionalJUnit4SpringCo
     }
 
     @Test
-    public void testSaveOrUpdate() throws Exception {
+    public void testSave() throws Exception {
         Patient patient = new Patient();
         patient.setPatientId(3);
         patient.setFirstName("Aleksandr");
         patient.setSecondName("Kulakov");
         patient.setMiddleName("Petrovich");
         patient.setStudentId(55593345);
-        dao.saveOrUpdate(patient);
+        dao.save(patient);
         assertEquals(dao.getAll(0, 10).size(), 3);
     }
 
@@ -59,7 +59,7 @@ public class PatientHibernateDaoTest extends AbstractTransactionalJUnit4SpringCo
         patient.setSecondName("Kulakov");
         patient.setMiddleName("Petrovich");
         patient.setStudentId(55593345);
-        dao.saveOrUpdate(patient);
+        dao.save(patient);
         assertEquals(dao.getAll(0, 10).size(), 3);
         dao.delete(patient);
         assertEquals(dao.getAll(0, 10).size(), 2);

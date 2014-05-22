@@ -13,8 +13,13 @@ import java.util.List;
 public class DiagnosisHibernateDao extends AbstractHibernateDao<Diagnosis> {
 
     @Override
-    public void saveOrUpdate(Diagnosis persistence) {
+    public void save(Diagnosis persistence) {
         getSession().save(persistence);
+    }
+
+    @Override
+    public void update(Diagnosis persistence) {
+        getSession().update(persistence);
     }
 
 
@@ -35,5 +40,10 @@ public class DiagnosisHibernateDao extends AbstractHibernateDao<Diagnosis> {
         query.setFirstResult(pageNumber);
         query.setMaxResults(pageSize);
         return query.list();
+    }
+
+    @Override
+    public List<Diagnosis> findByCriteria(Object obj) {
+        return null;
     }
 }

@@ -20,8 +20,13 @@ public class TransactionalCurrentProcedureService implements EntityService<Curre
     Dao<CurrentProcedure> currentProcedureDao;
 
     @Override
-    public void saveOrUpdate(CurrentProcedure persistence) {
-        currentProcedureDao.saveOrUpdate(persistence);
+    public void save(CurrentProcedure persistence) {
+        currentProcedureDao.save(persistence);
+    }
+
+    @Override
+    public void update(CurrentProcedure persistence) {
+        currentProcedureDao.update(persistence);
     }
 
     @Override
@@ -37,5 +42,10 @@ public class TransactionalCurrentProcedureService implements EntityService<Curre
     @Override
     public List<CurrentProcedure> getAll(int pageNumber, int pageSize) {
         return currentProcedureDao.getAll(pageNumber, pageSize);
+    }
+
+    @Override
+    public List<CurrentProcedure> findByCriteria(Object obj) {
+        return null;
     }
 }

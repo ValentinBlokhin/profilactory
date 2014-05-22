@@ -12,8 +12,13 @@ import java.util.List;
 @Component
 public class PermitHibernateDao extends AbstractHibernateDao<Permit> {
     @Override
-    public void saveOrUpdate(Permit persistence) {
+    public void save(Permit persistence) {
         getSession().save(persistence);
+    }
+
+    @Override
+    public void update(Permit persistence) {
+        getSession().update(persistence);
     }
 
 
@@ -34,5 +39,10 @@ public class PermitHibernateDao extends AbstractHibernateDao<Permit> {
         query.setFirstResult(pageNumber);
         query.setMaxResults(pageSize);
         return query.list();
+    }
+
+    @Override
+    public List<Permit> findByCriteria(Object obj) {
+        return null;
     }
 }

@@ -12,8 +12,13 @@ import java.util.List;
 @Component
 public class PersonalHibernateDao extends AbstractHibernateDao<Personal> {
     @Override
-    public void saveOrUpdate(Personal persistence) {
+    public void save(Personal persistence) {
         getSession().save(persistence);
+    }
+
+    @Override
+    public void update(Personal persistence) {
+        getSession().update(persistence);
     }
 
 
@@ -34,5 +39,10 @@ public class PersonalHibernateDao extends AbstractHibernateDao<Personal> {
         query.setFirstResult(pageNumber);
         query.setMaxResults(pageSize);
         return query.list();
+    }
+
+    @Override
+    public List<Personal> findByCriteria(Object obj) {
+        return null;
     }
 }

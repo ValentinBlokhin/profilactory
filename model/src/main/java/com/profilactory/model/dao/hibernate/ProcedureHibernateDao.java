@@ -12,8 +12,13 @@ import java.util.List;
 @Component
 public class ProcedureHibernateDao extends AbstractHibernateDao<Procedure> {
     @Override
-    public void saveOrUpdate(Procedure persistence) {
+    public void save(Procedure persistence) {
         getSession().save(persistence);
+    }
+
+    @Override
+    public void update(Procedure persistence) {
+        getSession().update(persistence);
     }
 
 
@@ -34,5 +39,10 @@ public class ProcedureHibernateDao extends AbstractHibernateDao<Procedure> {
         query.setFirstResult(pageNumber);
         query.setMaxResults(pageSize);
         return query.list();
+    }
+
+    @Override
+    public List<Procedure> findByCriteria(Object obj) {
+        return null;
     }
 }

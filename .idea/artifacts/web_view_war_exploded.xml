@@ -84,6 +84,9 @@
           <element id="library" level="project" name="Maven: org.apache.tiles:tiles-request-servlet:1.0.3" />
           <element id="library" level="project" name="Maven: org.apache.tiles:tiles-jsp:3.0.3" />
           <element id="library" level="project" name="Maven: org.apache.tiles:tiles-request-jsp:1.0.3" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.3.3" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.3.3" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.3.3" />
         </element>
       </element>
     </root>

@@ -43,13 +43,13 @@ public class CurrentPatientHibernateDaoTest extends AbstractTransactionalJUnit4S
     }
 
     @Test
-    public void testSaveOrUpdate() throws Exception {
+    public void testSave() throws Exception {
         CurrentPatient currentPatient = new CurrentPatient();
         currentPatient.setCurrentPatientId(3);
         currentPatient.setDrugDiagnosisDiagnosisId(1);
         currentPatient.setDrugDiagnosisDrugId(1);
         currentPatient.setPatientId(1);
-        dao.saveOrUpdate(currentPatient);
+        dao.save(currentPatient);
         assertEquals(dao.getAll(0, 10).size(), 3);
     }
 
@@ -60,7 +60,7 @@ public class CurrentPatientHibernateDaoTest extends AbstractTransactionalJUnit4S
         currentPatient.setDrugDiagnosisDiagnosisId(1);
         currentPatient.setDrugDiagnosisDrugId(1);
         currentPatient.setPatientId(1);
-        dao.saveOrUpdate(currentPatient);
+        dao.save(currentPatient);
         assertEquals(dao.getAll(0, 10).size(), 3);
         dao.delete(currentPatient);
         assertEquals(dao.getAll(0, 10).size(), 2);

@@ -20,8 +20,13 @@ public class TransactionalDrugService implements EntityService<Drug> {
     Dao<Drug> drugDao;
 
     @Override
-    public void saveOrUpdate(Drug persistence) {
-        drugDao.saveOrUpdate(persistence);
+    public void save(Drug persistence) {
+        drugDao.save(persistence);
+    }
+
+    @Override
+    public void update(Drug persistence) {
+        drugDao.update(persistence);
     }
 
     @Override
@@ -37,5 +42,10 @@ public class TransactionalDrugService implements EntityService<Drug> {
     @Override
     public List<Drug> getAll(int pageNumber, int pageSize) {
         return drugDao.getAll(pageNumber, pageSize);
+    }
+
+    @Override
+    public List<Drug> findByCriteria(Object obj) {
+        return null;
     }
 }

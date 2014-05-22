@@ -43,12 +43,12 @@ public class CabinetHibernateDaoTest extends AbstractTransactionalJUnit4SpringCo
     }
 
     @Test
-    public void testSaveOrUpdate() throws Exception {
+    public void testSave() throws Exception {
         Cabinet cabinet = new Cabinet();
         cabinet.setName("test3");
         cabinet.setCabinetId(3);
         cabinet.setPersonalId(2);
-        dao.saveOrUpdate(cabinet);
+        dao.save(cabinet);
         assertEquals(dao.getAll(0, 10).size(), 3);
     }
 
@@ -58,7 +58,7 @@ public class CabinetHibernateDaoTest extends AbstractTransactionalJUnit4SpringCo
         cabinet.setName("test3");
         cabinet.setCabinetId(3);
         cabinet.setPersonalId(2);
-        dao.saveOrUpdate(cabinet);
+        dao.save(cabinet);
         assertEquals(dao.getAll(0, 10).size(), 3);
         dao.delete(cabinet);
         assertEquals(dao.getAll(0, 10).size(), 2);

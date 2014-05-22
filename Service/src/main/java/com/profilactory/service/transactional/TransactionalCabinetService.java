@@ -20,8 +20,13 @@ public class TransactionalCabinetService implements EntityService<Cabinet> {
     Dao<Cabinet> cabinetDao;
 
     @Override
-    public void saveOrUpdate(Cabinet persistence) {
-        cabinetDao.saveOrUpdate(persistence);
+    public void save(Cabinet persistence) {
+        cabinetDao.save(persistence);
+    }
+
+    @Override
+    public void update(Cabinet persistence) {
+        cabinetDao.update(persistence);
     }
 
     @Override
@@ -37,5 +42,10 @@ public class TransactionalCabinetService implements EntityService<Cabinet> {
     @Override
     public List<Cabinet> getAll(int pageNumber, int pageSize) {
         return cabinetDao.getAll(pageNumber, pageSize);
+    }
+
+    @Override
+    public List<Cabinet> findByCriteria(Object obj) {
+        return null;
     }
 }

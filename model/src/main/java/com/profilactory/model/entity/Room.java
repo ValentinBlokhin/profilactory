@@ -3,9 +3,7 @@ package com.profilactory.model.entity;
 import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
-import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import java.util.Collection;
 
 /**
@@ -14,16 +12,19 @@ import java.util.Collection;
 @Entity
 public class Room {
 
+
     private int roomId;
     @NotNull
-    @Range(min = 1)
-    //@Pattern(regexp = "\\d+")
+    @Range(min = 1, max = 999)
     private int roomNumber;
 
     @NotNull
-    //@Pattern(regexp = "\\d+")
     @Range(min = 1, max = 4)
     private int seats;
+
+    private int busySeats;
+
+
     private Collection<Permit> permitsByRoomId;
 
 
@@ -66,6 +67,16 @@ public class Room {
         this.seats = seats;
     }
 
+    @Basic
+    @Column(name = "BUSYSEATS")
+    public int getBusySeats() {
+        return busySeats;
+    }
+
+    public void setBusySeats(int busySeats) {
+        this.busySeats = busySeats;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -73,9 +84,12 @@ public class Room {
 
         Room room = (Room) o;
 
+        if (busySeats != room.busySeats) return false;
         if (roomId != room.roomId) return false;
         if (roomNumber != room.roomNumber) return false;
         if (seats != room.seats) return false;
+        if (permitsByRoomId != null ? !permitsByRoomId.equals(room.permitsByRoomId) : room.permitsByRoomId != null)
+            return false;
 
         return true;
     }
@@ -85,6 +99,8 @@ public class Room {
         int result = roomId;
         result = 31 * result + roomNumber;
         result = 31 * result + seats;
+        result = 31 * result + busySeats;
+        result = 31 * result + (permitsByRoomId != null ? permitsByRoomId.hashCode() : 0);
         return result;
     }
 

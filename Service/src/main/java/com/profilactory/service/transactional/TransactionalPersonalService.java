@@ -19,8 +19,13 @@ public class TransactionalPersonalService implements EntityService<Personal> {
     Dao<Personal> personalDao;
 
     @Override
-    public void saveOrUpdate(Personal persistence) {
-        personalDao.saveOrUpdate(persistence);
+    public void save(Personal persistence) {
+        personalDao.save(persistence);
+    }
+
+    @Override
+    public void update(Personal persistence) {
+        personalDao.update(persistence);
     }
 
     @Override
@@ -36,5 +41,10 @@ public class TransactionalPersonalService implements EntityService<Personal> {
     @Override
     public List<Personal> getAll(int pageNumber, int pageSize) {
         return personalDao.getAll(pageNumber, pageSize);
+    }
+
+    @Override
+    public List<Personal> findByCriteria(Object obj) {
+        return null;
     }
 }

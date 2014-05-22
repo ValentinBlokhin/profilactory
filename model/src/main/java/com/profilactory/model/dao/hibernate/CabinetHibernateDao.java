@@ -13,8 +13,13 @@ import java.util.List;
 public class CabinetHibernateDao extends AbstractHibernateDao<Cabinet> {
 
     @Override
-    public void saveOrUpdate(Cabinet persistence) {
+    public void save(Cabinet persistence) {
         getSession().save(persistence);
+    }
+
+    @Override
+    public void update(Cabinet persistence) {
+        getSession().update(persistence);
     }
 
     @Override
@@ -34,6 +39,11 @@ public class CabinetHibernateDao extends AbstractHibernateDao<Cabinet> {
         query.setFirstResult(pageNumber);
         query.setMaxResults(pageSize);
         return query.list();
+    }
+
+    @Override
+    public List<Cabinet> findByCriteria(Object obj) {
+        return null;
     }
 
 }

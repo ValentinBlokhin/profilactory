@@ -41,12 +41,12 @@ public class ProcedureHibernateDaoTest extends AbstractTransactionalJUnit4Spring
     }
 
     @Test
-    public void testSaveOrUpdate() throws Exception {
+    public void testSave() throws Exception {
         Procedure procedure = new Procedure();
         procedure.setProcedureId(3);
         procedure.setName("Massage");
         procedure.setPurpose("for like");
-        procedureHibernateDao.saveOrUpdate(procedure);
+        procedureHibernateDao.save(procedure);
         assertEquals(procedureHibernateDao.getAll(0, 10).size(), 3);
     }
 
@@ -56,7 +56,7 @@ public class ProcedureHibernateDaoTest extends AbstractTransactionalJUnit4Spring
         procedure.setProcedureId(3);
         procedure.setName("Massage");
         procedure.setPurpose("for like");
-        procedureHibernateDao.saveOrUpdate(procedure);
+        procedureHibernateDao.save(procedure);
         assertEquals(procedureHibernateDao.getAll(0, 10).size(), 3);
         procedureHibernateDao.delete(procedure);
         assertEquals(procedureHibernateDao.getAll(0, 10).size(), 2);

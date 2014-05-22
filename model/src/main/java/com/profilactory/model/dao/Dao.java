@@ -1,6 +1,7 @@
 package com.profilactory.model.dao;
 
 import org.springframework.test.context.transaction.TransactionConfiguration;
+import org.springframework.transaction.annotation.Propagation;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -8,10 +9,11 @@ import java.util.List;
 /**
  * Created by ValentinBlokhin on 3/25/2014.
  */
-@Transactional(Transactional.TxType.REQUIRED)
 public interface Dao<T> {
 
-    void saveOrUpdate(T persistence);
+    void save(T persistence);
+
+    void update(T persistence);
 
     void delete(T persistence);
 
@@ -19,5 +21,6 @@ public interface Dao<T> {
 
     List<T> getAll(int pageNumber, int pageSize);
 
+    List<T> findByCriteria(Object obj);
 
 }

@@ -12,8 +12,13 @@ import java.util.List;
 @Component
 public class CurrentProcedureHibernateDao extends AbstractHibernateDao<CurrentProcedure> {
     @Override
-    public void saveOrUpdate(CurrentProcedure persistence) {
+    public void save(CurrentProcedure persistence) {
         getSession().save(persistence);
+    }
+
+    @Override
+    public void update(CurrentProcedure persistence) {
+        getSession().update(persistence);
     }
 
 
@@ -36,5 +41,10 @@ public class CurrentProcedureHibernateDao extends AbstractHibernateDao<CurrentPr
         return query.list();
 
 
+    }
+
+    @Override
+    public List<CurrentProcedure> findByCriteria(Object obj) {
+        return null;
     }
 }

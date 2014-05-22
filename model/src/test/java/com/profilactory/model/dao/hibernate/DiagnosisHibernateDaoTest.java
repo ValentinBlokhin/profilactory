@@ -41,11 +41,11 @@ public class DiagnosisHibernateDaoTest extends AbstractTransactionalJUnit4Spring
     }
 
     @Test
-    public void testSaveOrUpdate() throws Exception {
+    public void testSave() throws Exception {
         Diagnosis diagnosis = new Diagnosis();
         diagnosis.setDiagnosisId(3);
         diagnosis.setName("oznob");
-        diagnosisHibernateDao.saveOrUpdate(diagnosis);
+        diagnosisHibernateDao.save(diagnosis);
         assertEquals(diagnosisHibernateDao.getAll(0, 10).size(), 3);
     }
 
@@ -54,7 +54,7 @@ public class DiagnosisHibernateDaoTest extends AbstractTransactionalJUnit4Spring
         Diagnosis diagnosis = new Diagnosis();
         diagnosis.setDiagnosisId(3);
         diagnosis.setName("oznob");
-        diagnosisHibernateDao.saveOrUpdate(diagnosis);
+        diagnosisHibernateDao.save(diagnosis);
         assertEquals(diagnosisHibernateDao.getAll(0, 10).size(), 3);
         diagnosisHibernateDao.delete(diagnosis);
         assertEquals(diagnosisHibernateDao.getAll(0, 10).size(), 2);

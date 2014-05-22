@@ -41,12 +41,12 @@ public class DrugHibernateDaoTest extends AbstractTransactionalJUnit4SpringConte
     }
 
     @Test
-    public void testSaveOrUpdate() throws Exception {
+    public void testSave() throws Exception {
         Drug drug = new Drug();
         drug.setDrugId(3);
         drug.setName("pikovit");
         drug.setType("vitamins");
-        drugHibernateDao.saveOrUpdate(drug);
+        drugHibernateDao.save(drug);
         assertEquals(drugHibernateDao.getAll(0, 10).size(), 3);
     }
 
@@ -56,7 +56,7 @@ public class DrugHibernateDaoTest extends AbstractTransactionalJUnit4SpringConte
         drug.setDrugId(3);
         drug.setName("pikovit");
         drug.setType("vitamins");
-        drugHibernateDao.saveOrUpdate(drug);
+        drugHibernateDao.save(drug);
         assertEquals(drugHibernateDao.getAll(0, 10).size(), 3);
         drugHibernateDao.delete(drug);
         assertEquals(drugHibernateDao.getAll(0, 10).size(), 2);

@@ -43,11 +43,11 @@ public class DrugDiagnosisHibernateDaoTest extends AbstractTransactionalJUnit4Sp
     }
 
     @Test
-    public void testSaveOrUpdate() throws Exception {
+    public void testSave() throws Exception {
         DrugDiagnosis drugDiagnosis = new DrugDiagnosis();
         drugDiagnosis.setIdDiagnosis(2);
         drugDiagnosis.setIdDrug(2);
-        dao.saveOrUpdate(drugDiagnosis);
+        dao.save(drugDiagnosis);
         assertEquals(dao.getAll(0, 10).size(), 3);
     }
 
@@ -56,7 +56,7 @@ public class DrugDiagnosisHibernateDaoTest extends AbstractTransactionalJUnit4Sp
         DrugDiagnosis drugDiagnosis = new DrugDiagnosis();
         drugDiagnosis.setIdDiagnosis(2);
         drugDiagnosis.setIdDrug(2);
-        dao.saveOrUpdate(drugDiagnosis);
+        dao.save(drugDiagnosis);
         assertEquals(dao.getAll(0, 10).size(), 3);
         dao.delete(drugDiagnosis);
         assertEquals(dao.getAll(0, 10).size(), 2);

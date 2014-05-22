@@ -41,11 +41,11 @@ public class PostHibernateDaoTest extends AbstractTransactionalJUnit4SpringConte
     }
 
     @Test
-    public void testSaveOrUpdate() throws Exception {
+    public void testSave() throws Exception {
         Post post = new Post();
         post.setPostId(3);
         post.setName("test3");
-        dao.saveOrUpdate(post);
+        dao.save(post);
         assertEquals(dao.getAll(0, 3).size(), 3);
 
     }
@@ -55,7 +55,7 @@ public class PostHibernateDaoTest extends AbstractTransactionalJUnit4SpringConte
         Post post = new Post();
         post.setPostId(3);
         post.setName("test3");
-        dao.saveOrUpdate(post);
+        dao.save(post);
         dao.delete(post);
         assertEquals(dao.getAll(0, 10).size(), 2);
     }

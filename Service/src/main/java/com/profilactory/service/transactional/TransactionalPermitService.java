@@ -20,8 +20,13 @@ public class TransactionalPermitService implements EntityService<Permit> {
     Dao<Permit> permitDao;
 
     @Override
-    public void saveOrUpdate(Permit persistence) {
-        permitDao.saveOrUpdate(persistence);
+    public void save(Permit persistence) {
+        permitDao.save(persistence);
+    }
+
+    @Override
+    public void update(Permit persistence) {
+        permitDao.update(persistence);
     }
 
     @Override
@@ -37,5 +42,10 @@ public class TransactionalPermitService implements EntityService<Permit> {
     @Override
     public List<Permit> getAll(int pageNumber, int pageSize) {
         return permitDao.getAll(pageNumber, pageSize);
+    }
+
+    @Override
+    public List<Permit> findByCriteria(Object obj) {
+        return null;
     }
 }

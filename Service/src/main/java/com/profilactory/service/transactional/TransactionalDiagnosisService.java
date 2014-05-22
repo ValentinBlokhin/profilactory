@@ -20,8 +20,13 @@ public class TransactionalDiagnosisService implements EntityService<Diagnosis> {
     Dao<Diagnosis> diagnosisDao;
 
     @Override
-    public void saveOrUpdate(Diagnosis persistence) {
-        diagnosisDao.saveOrUpdate(persistence);
+    public void save(Diagnosis persistence) {
+        diagnosisDao.save(persistence);
+    }
+
+    @Override
+    public void update(Diagnosis persistence) {
+        diagnosisDao.update(persistence);
     }
 
     @Override
@@ -37,5 +42,10 @@ public class TransactionalDiagnosisService implements EntityService<Diagnosis> {
     @Override
     public List<Diagnosis> getAll(int pageNumber, int pageSize) {
         return diagnosisDao.getAll(pageNumber, pageSize);
+    }
+
+    @Override
+    public List<Diagnosis> findByCriteria(Object obj) {
+        return null;
     }
 }

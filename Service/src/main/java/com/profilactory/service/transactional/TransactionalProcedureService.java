@@ -20,8 +20,13 @@ public class TransactionalProcedureService implements EntityService<Procedure> {
     Dao<Procedure> procedureDao;
 
     @Override
-    public void saveOrUpdate(Procedure persistence) {
-        procedureDao.saveOrUpdate(persistence);
+    public void save(Procedure persistence) {
+        procedureDao.save(persistence);
+    }
+
+    @Override
+    public void update(Procedure persistence) {
+        procedureDao.update(persistence);
     }
 
     @Override
@@ -37,5 +42,10 @@ public class TransactionalProcedureService implements EntityService<Procedure> {
     @Override
     public List<Procedure> getAll(int pageNumber, int pageSize) {
         return procedureDao.getAll(pageNumber, pageSize);
+    }
+
+    @Override
+    public List<Procedure> findByCriteria(Object obj) {
+        return null;
     }
 }

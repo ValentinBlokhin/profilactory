@@ -21,8 +21,13 @@ public class TransactionalPostService implements EntityService<Post> {
     private Dao<Post> dao;
 
     @Override
-    public void saveOrUpdate(Post persistence) {
-        dao.saveOrUpdate(persistence);
+    public void save(Post persistence) {
+        dao.save(persistence);
+    }
+
+    @Override
+    public void update(Post persistence) {
+        dao.update(persistence);
     }
 
     @Override
@@ -38,5 +43,10 @@ public class TransactionalPostService implements EntityService<Post> {
     @Override
     public List<Post> getAll(int pageNumber, int pageSize) {
         return dao.getAll(pageNumber, pageSize);
+    }
+
+    @Override
+    public List<Post> findByCriteria(Object obj) {
+        return null;
     }
 }

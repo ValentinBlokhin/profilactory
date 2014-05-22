@@ -12,8 +12,13 @@ import java.util.List;
 @Component
 public class CurrentPatientHibernateDao extends AbstractHibernateDao<CurrentPatient> {
     @Override
-    public void saveOrUpdate(CurrentPatient persistence) {
+    public void save(CurrentPatient persistence) {
         getSession().save(persistence);
+    }
+
+    @Override
+    public void update(CurrentPatient persistence) {
+        getSession().update(persistence);
     }
 
     @Override
@@ -33,5 +38,10 @@ public class CurrentPatientHibernateDao extends AbstractHibernateDao<CurrentPati
         query.setFirstResult(pageNumber);
         query.setMaxResults(pageSize);
         return query.list();
+    }
+
+    @Override
+    public List<CurrentPatient> findByCriteria(Object obj) {
+        return null;
     }
 }

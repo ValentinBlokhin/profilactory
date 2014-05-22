@@ -1,6 +1,7 @@
 package com.profilactory.service.transactional;
 
 import com.profilactory.model.dao.Dao;
+import com.profilactory.model.dao.hibernate.RoomHibernateDao;
 import com.profilactory.model.entity.Room;
 import com.profilactory.service.EntityService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +22,13 @@ public class TransactionalRoomService implements EntityService<Room> {
 
 
     @Override
-    public void saveOrUpdate(Room persistence) {
-        dao.saveOrUpdate(persistence);
+    public void save(Room persistence) {
+        dao.save(persistence);
+    }
+
+    @Override
+    public void update(Room persistence) {
+        dao.update(persistence);
     }
 
     @Override
@@ -38,5 +44,10 @@ public class TransactionalRoomService implements EntityService<Room> {
     @Override
     public List<Room> getAll(int pageNumber, int pageSize) {
         return dao.getAll(pageNumber, pageSize);
+    }
+
+    @Override
+    public List<Room> findByCriteria(Object obj) {
+        return dao.findByCriteria(obj);
     }
 }
