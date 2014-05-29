@@ -2,6 +2,7 @@ package com.profilactory.webview.controller.addPatient;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.profilactory.model.dao.Dao;
+import com.profilactory.model.entity.Patient;
 import com.profilactory.model.entity.Permit;
 import com.profilactory.model.entity.Personal;
 import com.profilactory.model.entity.Room;
@@ -42,6 +43,10 @@ public class ManagerController {
     @Autowired
     @Qualifier("PersonalService")
     EntityService<Personal> personalService;
+
+    @Autowired
+    @Qualifier("PatientService")
+    EntityService<Patient> patientEntityService;
 
     @RequestMapping(value = "/manage", method = RequestMethod.GET)
     public ModelAndView loadForm() {
@@ -94,6 +99,20 @@ public class ManagerController {
         return "manage";
     }
 
+    @RequestMapping(value = "manage/room/delete/{id}", method = RequestMethod.POST)
+    @ResponseBody
+    public String deleteRoom(@PathVariable Integer id, Model model) {
+
+        logger.debug("IN: deleteRoom by id " + id);
+
+        Room room = roomService.get(id);
+
+        roomService.delete(room);
+
+        return "true";
+
+    }
+
 
     @RequestMapping(value = "/manage/personal", method = RequestMethod.GET)
     public ModelAndView loadPersonalForm() {
@@ -120,4 +139,9 @@ public class ManagerController {
         ObjectMapper mapper = new ObjectMapper();
         return mapper.writeValueAsString(available);
     }
+
+
+//    @RequestMapping(value = "/manage/getallrooms")
+//    public @ResponseBody
+//    DatatablesResponse findAllRooms(@DatatablesParams DatatablesCriterias criterias)
 }

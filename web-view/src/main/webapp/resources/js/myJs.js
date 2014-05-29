@@ -11,7 +11,6 @@ $(document).ready(function () {
         if ((!(onlyNumber(e, errorMessage)))) {
             return false;
         }
-
         checkLength(checkRoomNumb, maxLength);
 
     });
@@ -67,11 +66,39 @@ $(document).ready(function () {
     $('#manageRoomTable').dataTable({
         ordering: true
     });
+    $('#managePatientTable').dataTable({
+        ordering: true
+    });
+
+    $('#checkIn').datepicker({
+        format: 'yyyy-mm-dd'
+    });
 });
+
 
 $(document).ready(function () {
     $('#manageRoomTable_length').css('padding-top', '5px');
+    $('#managePatientTable_length').css('padding-top', '5px');
+
 });
+
+
+function deleteRoom(id) {
+    $.ajax({
+        type: "POST",
+        url: "/manage/room/delete/" + id,
+        cache: false,
+        data: 'roomNumber' + id,
+        success: function () {
+            var showMessage = $('#alertBlock');
+            showMessage.removeClass('hide');
+            showMessage.text('Remove success id = ' + id + ' please, reload page');
+        },
+        error: function (jqXhr, textStatus, errorThrown) {
+            alert(textStatus);
+        }
+    })
+}
 
 function checkUniq() {
     $.ajax({

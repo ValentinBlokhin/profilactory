@@ -12,8 +12,11 @@
 <tiles:insertDefinition name="manage">
     <tiles:putAttribute name="body">
         <div class="col-md-9 content-nav">
-        <div class="tab-content">
-            <div class="tab-pane fade active in" id="room-div">
+            <div class="tab-content">
+                    <%--<div class="tab-pane fade active in" id="room-div">--%>
+                <div class="alert alert-success hide" id="alertBlock">
+                    <button type="button" class="close" data-dismiss="alert">x</button>
+                </div>
                 <a href="<c:url value="/manage/room/addRoom"/>" class="btn btn-success " role="button">Add room</a>
 
                 <table id="manageRoomTable" class="table table-striped table-bordered" cellpadding="0" width="100%">
@@ -35,7 +38,9 @@
                             <td><c:out value="${rooms.seats}"/></td>
                             <td><c:out value="${rooms.busySeats}"/></td>
                             <td><a href="/manage/room/edit/${rooms.roomId}" class="btn btn-default">edit</a></td>
-                            <td><a href="#" class="btn btn-default">delete</a></td>
+                            <td>
+                                <button class="btn btn-default" onclick="deleteRoom(${rooms.roomId})">delete</button>
+                            </td>
                         </tr>
                     </c:forEach>
                     </tbody>

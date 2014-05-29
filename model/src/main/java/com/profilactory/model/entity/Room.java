@@ -112,4 +112,9 @@ public class Room {
     public void setPermitsByRoomId(Collection<Permit> permitsByRoomId) {
         this.permitsByRoomId = permitsByRoomId;
     }
+
+//    @Override
+//    public String toString() {
+//        return String.valueOf(roomNumber);
+//    }
 }

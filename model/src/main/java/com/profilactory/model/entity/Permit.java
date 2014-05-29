@@ -1,6 +1,7 @@
 package com.profilactory.model.entity;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.Collection;
 
@@ -10,8 +11,9 @@ import java.util.Collection;
 @Entity
 public class Permit {
     private int permitId;
-    private Timestamp checkIn;
-    private Timestamp checkOut;
+
+    private Date checkIn;
+    private Date checkOut;
     private Integer roomId;
     private int patientId;
     private Collection<CurrentProcedure> currentProceduresByPermitId;
@@ -30,21 +32,21 @@ public class Permit {
 
     @Basic
     @Column(name = "CHECK_IN")
-    public Timestamp getCheckIn() {
+    public Date getCheckIn() {
         return checkIn;
     }
 
-    public void setCheckIn(Timestamp checkIn) {
+    public void setCheckIn(Date checkIn) {
         this.checkIn = checkIn;
     }
 
     @Basic
     @Column(name = "CHECK_OUT")
-    public Timestamp getCheckOut() {
+    public Date getCheckOut() {
         return checkOut;
     }
 
-    public void setCheckOut(Timestamp checkOut) {
+    public void setCheckOut(Date checkOut) {
         this.checkOut = checkOut;
     }
 

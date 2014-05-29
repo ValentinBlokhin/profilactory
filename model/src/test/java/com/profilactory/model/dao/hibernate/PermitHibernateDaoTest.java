@@ -14,7 +14,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 
 import java.sql.Timestamp;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -45,9 +45,9 @@ public class PermitHibernateDaoTest extends AbstractTransactionalJUnit4SpringCon
     public void testSave() throws Exception {
         Permit permit = new Permit();
         permit.setPermitId(3);
-        Date date = new Date();
-        permit.setCheckIn(new Timestamp(date.getTime()));
-        permit.setCheckOut(new Timestamp(date.getTime()));
+        java.util.Date date = new java.util.Date();
+        permit.setCheckIn(new Date(date.getTime()));
+        permit.setCheckOut(new Date(date.getTime()));
         permit.setRoomId(2);
         permit.setPatientId(1);
         permitHibernateDao.save(permit);

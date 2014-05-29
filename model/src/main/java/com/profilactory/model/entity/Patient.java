@@ -1,6 +1,9 @@
 package com.profilactory.model.entity;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Collection;
 
 /**
@@ -9,9 +12,14 @@ import java.util.Collection;
 @Entity
 public class Patient {
     private int patientId;
+
+    @NotEmpty
     private String firstName;
+    @NotEmpty
     private String secondName;
+    @NotEmpty
     private String middleName;
+    @NotNull
     private int studentId;
     private Collection<CurrentPatient> currentPatientsByPatientId;
     private Collection<Permit> permitsByPatientId;

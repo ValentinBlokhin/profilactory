@@ -25,4 +25,12 @@
         <put-attribute name="current" value="manage/post"/>
     </definition>
 
+    <definition name="manage/patient" extends="defaultTemplate">
+        <put-attribute name="current" value="manage/patient"/>
+    </definition>
+
+    <definition name="manage/permit" extends="defaultTemplate">
+        <put-attribute name="current" value="manage/permit"/>
+    </definition>
+
 </tiles-definitions>
