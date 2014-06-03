@@ -12,7 +12,7 @@
 <head>
     <link href="<c:url value="../../resources/style/bootstrap.min.css" />" rel="stylesheet"/>
     <link href="<c:url value="../../resources/style/style.css" />" rel="stylesheet"/>
-    <script src="<c:url value="../../resources/js/jquery-1.11.0.min.js"/>"></script>
+    <script src="<c:url value="../../resources/js/jquery-1.10.2.js"/>"></script>
     <script src="<c:url value="../../resources/js/bootstrap.min.js" />"></script>
     <meta charset="utf-8"/>
     <title>hello</title>
@@ -58,7 +58,7 @@
                 <span>treatment program</span>
             </div>
             <div class="col-md-4 sign-block-right_side-button">
-                <a href="#" class="btn">learn more</a>
+                <a href="<c:url value="/manage" />" class="btn">sign in</a>
             </div>
         </div>
         <%-- sing block--%>

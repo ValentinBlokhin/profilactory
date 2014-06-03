@@ -43,7 +43,8 @@
                                     href="<c:url value="/manage/patient"/>">Patients</a></li>
                             <li class="${current == 'manage/permit' ? 'active' : ''}"><a
                                     href="<c:url value="/manage/permit"/>">Permits</a></li>
-                            <li><a href="#">Menu Item 4</a></li>
+                            <li class="${current == 'manage/permitstatistics' ? 'active' : ''}"><a
+                                    href="<c:url value="/manage/permitstatistics"/> ">Statistics</a></li>
                             <li><a href="#">Reviews</a></li>
                         </ul>
                     </div>

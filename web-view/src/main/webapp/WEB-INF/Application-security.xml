@@ -7,8 +7,17 @@
        http://www.springframework.org/schema/security
        http://www.springframework.org/schema/security/spring-security.xsd">
 
-    <security:http auto-config="true">
-        <security:intercept-url pattern="/manage" access="ROLE_ADMIN"/>
+    <security:http auto-config="true" use-expressions="true">
+        <security:intercept-url pattern="/manage**" access="hasRole('ROLE_ADMIN')"/>
+        <security:form-login
+                login-page="/login"
+                default-target-url="/manage"
+                authentication-failure-url="/login?error"
+                username-parameter="username"
+                password-parameter="password"/>
+
+        <security:remember-me key="uniqueRemembr" user-service-ref="userService"/>
+        <security:logout logout-success-url="/login"/>
     </security:http>
 
     <security:authentication-manager>

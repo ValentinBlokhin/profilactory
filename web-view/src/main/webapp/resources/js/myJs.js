@@ -73,6 +73,13 @@ $(document).ready(function () {
     $('#checkIn').datepicker({
         format: 'yyyy-mm-dd'
     });
+    $('#fromInput').datepicker({
+        format: 'yyyy-mm-dd'
+    });
+    $('#toInput').datepicker({
+        format: 'yyyy-mm-dd'
+    });
+
 });
 
 

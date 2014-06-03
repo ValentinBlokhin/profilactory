@@ -34,21 +34,21 @@ public class ManagerController {
 
     @Autowired
     @Qualifier("RoomService")
-    EntityService<Room> roomService;
+    private EntityService<Room> roomService;
 
     @Autowired
     @Qualifier("PermitService")
-    EntityService<Permit> permitService;
+    private EntityService<Permit> permitService;
 
     @Autowired
     @Qualifier("PersonalService")
-    EntityService<Personal> personalService;
+    private EntityService<Personal> personalService;
 
     @Autowired
     @Qualifier("PatientService")
-    EntityService<Patient> patientEntityService;
+    private EntityService<Patient> patientEntityService;
 
-    @RequestMapping(value = "/manage", method = RequestMethod.GET)
+    @RequestMapping(value = "/manage")
     public ModelAndView loadForm() {
         ModelAndView modelAndView = new ModelAndView("manage", "commandRoom", new Room());
         modelAndView.addObject("Room", new Room());

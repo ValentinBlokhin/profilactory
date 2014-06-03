@@ -26,15 +26,16 @@ public class PermitController {
 
     @Autowired
     @Qualifier("PermitService")
-    EntityService<Permit> permitEntityService;
+    private EntityService<Permit> permitEntityService;
 
     @Autowired
     @Qualifier("RoomService")
-    EntityService<Room> roomEntityService;
+    private EntityService<Room> roomEntityService;
 
     @Autowired
     @Qualifier("PatientService")
-    EntityService<Patient> patientEntityService;
+    private EntityService<Patient> patientEntityService;
+
 
     private static final Logger logger = Logger.getLogger(PermitController.class);
 
@@ -107,6 +108,16 @@ public class PermitController {
         return "redirect:/manage/permit";
 
     }
+
+    @RequestMapping(value = "manage/permitstatistics", method = RequestMethod.GET)
+    public String showPermitStatistics() {
+
+
+        return "ManageAdd/statistics/permitStatistics";
+    }
+
+
+
 
 
 }

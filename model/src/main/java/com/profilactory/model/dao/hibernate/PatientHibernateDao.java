@@ -1,6 +1,7 @@
 package com.profilactory.model.dao.hibernate;
 
 import com.profilactory.model.entity.Patient;
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.springframework.stereotype.Component;
 
@@ -43,6 +44,7 @@ public class PatientHibernateDao extends AbstractHibernateDao<Patient> {
 
     @Override
     public List<Patient> findByCriteria(Object obj) {
+
         return null;
     }
 }

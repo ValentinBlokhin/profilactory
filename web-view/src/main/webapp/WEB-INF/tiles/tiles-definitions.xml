@@ -33,4 +33,8 @@
         <put-attribute name="current" value="manage/permit"/>
     </definition>
 
+    <definition name="manage/permitStats" extends="defaultTemplate">
+        <put-attribute name="current" value="manage/permitStats"/>
+    </definition>
+
 </tiles-definitions>
