@@ -30,7 +30,7 @@ import java.util.Set;
  */
 @Controller
 public class ManagerController {
-    private static final Logger logger = Logger.getLogger(ManagerController.class);
+    private final Logger logger = Logger.getLogger("Global");
 
     @Autowired
     @Qualifier("RoomService")

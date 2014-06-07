@@ -75,5 +75,6 @@
                 </form:form> <%-- room form --%>
             </fieldset>
         </div>
+        <script src="<c:url value="../../../../resources/js/myJs.js"/> "></script>
     </tiles:putAttribute>
 </tiles:insertDefinition>

@@ -1,22 +1,27 @@
 package com.profilactory.webview.controller.addPatient;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.profilactory.model.entity.Patient;
 import com.profilactory.model.entity.Permit;
 import com.profilactory.model.entity.Room;
 import com.profilactory.service.EntityService;
+import com.profilactory.service.ReportService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 
 /**
  * Created by ValentinBlokhin on 5/28/2014.
@@ -36,8 +41,11 @@ public class PermitController {
     @Qualifier("PatientService")
     private EntityService<Patient> patientEntityService;
 
+    @Autowired
+    private ReportService reportService;
 
-    private static final Logger logger = Logger.getLogger(PermitController.class);
+
+    private final Logger logger = Logger.getLogger("Global");
 
     @RequestMapping(value = "/manage/permit", method = RequestMethod.GET)
     public ModelAndView loadTable() {
@@ -96,28 +104,56 @@ public class PermitController {
     }
 
     @RequestMapping(value = "manage/permit/delete/{id}", method = RequestMethod.GET)
-    public String deleteRoom(@PathVariable Integer id, Model model) {
+    public String deletePermit(@PathVariable Integer id, Model model) {
 
         logger.debug("IN: deletePermit by id " + id);
 
         Permit permit = permitEntityService.get(id);
 
         permitEntityService.delete(permit);
-        // model.addAttribute("patientsList", patientEntityService.getAll(0, 1000));
+        model.addAttribute("patientsList", patientEntityService.getAll(0, 1000));
 
         return "redirect:/manage/permit";
 
     }
 
     @RequestMapping(value = "manage/permitstatistics", method = RequestMethod.GET)
-    public String showPermitStatistics() {
-
-
+    public String showPermitStatistics() throws ParseException {
         return "ManageAdd/statistics/permitStatistics";
     }
 
+    @RequestMapping(value = "manage/permitstatistics", method = RequestMethod.POST)
+    public String getPermitStatistics(@RequestParam("fromInput") String checkIn, @RequestParam("toInput") String checkOut, Model model) throws ParseException {
 
+        List someList = reportService.findPermitByDate(checkIn, checkOut);
+        model.addAttribute("resultList", someList);
 
+        return "ManageAdd/statistics/byDate";
+    }
 
+    @RequestMapping(value = "/manage/permstats/data", method = RequestMethod.POST)
+    @ResponseBody
+    public String checkDate(WebRequest request) throws ParseException, JsonProcessingException {
+
+        String checkIn = request.getParameter("checkIn");
+        String checkOut = request.getParameter("checkOut");
+
+        logger.info("IN checkDatePermitStatistics: checkIn is " + checkIn + " checkOut is " + checkOut);
+        List someList = reportService.findPermitByDate(checkIn, checkOut);
+        String checkData;
+
+        if (someList.isEmpty()) {
+            checkData = "false";
+        } else {
+            checkData = "true";
+        }
+        ObjectMapper mapper = new ObjectMapper();
+        return mapper.writeValueAsString(checkData);
+    }
+
+    @RequestMapping(value = "manage/permitstatistics/bydate", method = RequestMethod.GET)
+    public String getByDateStats() {
+        return "ManageAdd/statistics/byDate";
+    }
 
 }

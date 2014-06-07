@@ -23,7 +23,7 @@ public class PatientController {
     @Qualifier("PatientService")
     EntityService<Patient> patientEntityService;
 
-    private static final Logger logger = Logger.getLogger(PatientController.class);
+    // private static final Logger logger = Logger.getLogger(PatientController.class);
 
     @RequestMapping(value = "/manage/patient", method = RequestMethod.GET)
     public ModelAndView loadTable() {
@@ -31,14 +31,14 @@ public class PatientController {
         modelAndView.addObject("patientsList", patientEntityService.getAll(0, 1000));
         modelAndView.addObject("patient", new Patient());
 
-        logger.debug("patient list size is: " + patientEntityService.getAll(0, 1000).size());
+        // logger.debug("patient list size is: " + patientEntityService.getAll(0, 1000).size());
 
         return modelAndView;
     }
 
     @RequestMapping(value = "/manage/patient/add", method = RequestMethod.GET)
     public ModelAndView addPatient() {
-        logger.info("in addRoom method");
+        //logger.info("in addRoom method");
         return new ModelAndView("ManageAdd/patient/addPatient", "addPatient", new Patient());
     }
 
@@ -47,11 +47,11 @@ public class PatientController {
 
 
         if (result.hasErrors()) {
-            logger.info("in save patient method. Has validation error");
+            //  logger.info("in save patient method. Has validation error");
             return "ManageAdd/patient/addPatient";
         } else {
             patientEntityService.save(patient);
-            logger.info("IN: savePatient. Add patient success");
+            //  logger.info("IN: savePatient. Add patient success");
             model.addAttribute("patientValues", patient);
             return "ManageAdd/patient/done";
         }
@@ -80,7 +80,7 @@ public class PatientController {
     @RequestMapping(value = "manage/patient/delete/{id}", method = RequestMethod.GET)
     public String deleteRoom(@PathVariable Integer id, Model model) {
 
-        logger.debug("IN: deletePatient by id " + id);
+        //logger.debug("IN: deletePatient by id " + id);
 
         Patient patient = patientEntityService.get(id);
 

@@ -1,6 +1,5 @@
-package com.profilactory.model.dao.hibernate;
+package com.profilactory.model.repository;
 
-import com.profilactory.model.dao.Dao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,12 +7,10 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 /**
- * Created by ValentinBlokhin on 3/25/2014.
+ * Created by ValentinBlokhin on 6/3/2014.
  */
-
 @Repository
-public abstract class AbstractHibernateDao<T> implements Dao<T> {
-
+public abstract class AbstractRepository {
 
     @Autowired
     @Qualifier("sessionFactory")

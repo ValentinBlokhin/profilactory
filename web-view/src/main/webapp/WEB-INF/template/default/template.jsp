@@ -23,7 +23,6 @@
     <script src="<c:url value="../../../resources/js/bootstrap-tab.js" />"></script>
     <script src="<c:url value="../../../resources/js/jquery.dataTables.js"/> "></script>
     <script src="<c:url value="../../../resources/js/dataTables.bootstrap.js"/> "></script>
-    <script src="<c:url value="../../../resources/js/myJs.js"/> "></script>
     <script type="text/javascript" src="http://www.technicalkeeda.com/js/javascripts/plugin/json2.js"></script>
     <title>Manage</title>
 </head>
