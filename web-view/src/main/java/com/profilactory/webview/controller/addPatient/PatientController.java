@@ -1,8 +1,9 @@
 package com.profilactory.webview.controller.addPatient;
 
-import com.profilactory.model.entity.Patient;
-import com.profilactory.model.entity.Room;
+import com.profilactory.model.entity.*;
+import com.profilactory.model.repository.IPatient;
 import com.profilactory.service.EntityService;
+import com.profilactory.service.IReportPatientService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.awt.event.MouseEvent;
+import java.util.List;
 
 /**
  * Created by ValentinBlokhin on 5/27/2014.
@@ -21,9 +24,12 @@ import javax.validation.Valid;
 public class PatientController {
     @Autowired
     @Qualifier("PatientService")
-    EntityService<Patient> patientEntityService;
+    private EntityService<Patient> patientEntityService;
 
-    // private static final Logger logger = Logger.getLogger(PatientController.class);
+    @Autowired
+    private IReportPatientService patientRepository;
+
+    private static final Logger logger = Logger.getLogger("Global");
 
     @RequestMapping(value = "/manage/patient", method = RequestMethod.GET)
     public ModelAndView loadTable() {
@@ -64,6 +70,36 @@ public class PatientController {
 
         return "/ManageAdd/patient/edit";
 
+    }
+
+    @RequestMapping(value = "manage/patient/info/{id}", method = RequestMethod.GET)
+    public String getPatientInfo(@PathVariable Integer id, Model model) {
+
+        Permit permitForDate = null;
+        Diagnosis diagnosis = null;
+        List<Procedure> procedure = null;
+        List passedProcedure = null;
+        Room rooms = null;
+        List drugList = null;
+
+        try {
+            permitForDate = patientRepository.findPermitByPatientId(id).get(0);
+            diagnosis = patientRepository.findDiagnosisForPatient(id).get(0);
+            procedure = patientRepository.findProcedureByPatientId(id);
+            passedProcedure = patientRepository.findPassedProceduresByPatientId(id);
+            rooms = patientRepository.findRoomByPatientId(id).get(0);
+            drugList = patientRepository.findDrugByPatientId(id);
+        } catch (IndexOutOfBoundsException ex) {
+            logger.info("IN getPatientInfo : no data found exception");
+        }
+
+        model.addAttribute("permitForDate", permitForDate);
+        model.addAttribute("diagnosis", diagnosis);
+        model.addAttribute("procedureList", procedure);
+        model.addAttribute("passedProcedureList", passedProcedure);
+        model.addAttribute("rooms", rooms);
+        model.addAttribute("drugList", drugList);
+        return "ManageAdd/patient/info";
     }
 
     @RequestMapping(value = "/manage/patient/edit/{id}", method = RequestMethod.POST)

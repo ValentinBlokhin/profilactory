@@ -132,5 +132,37 @@ function checkUniq() {
             alert(textStatus);
         }
 
+    });
+}
+
+$(document).ready(function () {
+    $('#roomId').change(function (event) {
+        event.preventDefault();
+        var id = $('#roomId').val();
+        checkFreeRooms(id);
+    })
+});
+
+function checkFreeRooms(id) {
+    $.ajax({
+        type: "POST",
+        url: "/manage/permit/check-free-seats/" + id,
+        data: 'id' + $('#roomId').val(),
+        success: function (response) {
+            var errorMessage = $('#roomIdError');
+            var btn = $('#submitButton');
+            var obj = JSON.parse(response);
+            if (obj == "false") {
+                errorMessage.html("no free seats").css('color', 'red');
+                btn.attr('disabled', true);
+            } else {
+                btn.attr('disabled', false);
+                errorMessage.html("is free").css('color', 'green');
+            }
+        },
+        error: function (jqXhr, textStatus, errorThrown) {
+            alert(textStatus);
+        }
+
     })
 }

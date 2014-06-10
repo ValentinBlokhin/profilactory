@@ -2,6 +2,7 @@ package com.profilactory.service.transactional;
 
 import com.profilactory.model.entity.Permit;
 import com.profilactory.model.repository.IPermit;
+import com.profilactory.model.repository.IRoom;
 import com.profilactory.service.ReportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,9 @@ import java.util.List;
 @Service("ReportService")
 public class TransactionalReportService implements ReportService {
 
+    @Autowired
+    private IRoom roomRepository;
+
 
     @Autowired
     private IPermit permitRepository;
@@ -25,5 +29,10 @@ public class TransactionalReportService implements ReportService {
 
         return permitRepository.findPermitOnDate(checkIn, checkOut);
 
+    }
+
+    @Override
+    public boolean checkFreeSeats(Integer id) {
+        return roomRepository.checkFreeSeats(id);
     }
 }

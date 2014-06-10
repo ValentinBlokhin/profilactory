@@ -29,6 +29,7 @@
                         <th>STUDENT_ID</th>
                         <th>*</th>
                         <th>*</th>
+                        <th>*</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -39,6 +40,8 @@
                             <td><c:out value="${patients.secondName}"/></td>
                             <td><c:out value="${patients.middleName}"/></td>
                             <td><c:out value="${patients.studentId}"/></td>
+                            <td><a href="/manage/patient/info/${patients.patientId}" class="btn btn-default">info</a>
+                            </td>
                             <td><a href="/manage/patient/edit/${patients.patientId}" class="btn btn-default">edit</a>
                             </td>
                             <td><a href="/manage/patient/delete/${patients.patientId}"

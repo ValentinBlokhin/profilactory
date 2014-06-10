@@ -117,6 +117,21 @@ public class PermitController {
 
     }
 
+    @RequestMapping(value = "/manage/permit/check-free-seats/{id}", method = RequestMethod.POST)
+    @ResponseBody
+    public String checkFreeSeats(@PathVariable Integer id, Model model) throws JsonProcessingException {
+        boolean available = reportService.checkFreeSeats(id);
+        String response;
+        ObjectMapper mapper = new ObjectMapper();
+
+        if (available) {
+            response = "true";
+        } else {
+            response = "false";
+        }
+        return mapper.writeValueAsString(response);
+    }
+
     @RequestMapping(value = "manage/permitstatistics", method = RequestMethod.GET)
     public String showPermitStatistics() throws ParseException {
         return "ManageAdd/statistics/permitStatistics";

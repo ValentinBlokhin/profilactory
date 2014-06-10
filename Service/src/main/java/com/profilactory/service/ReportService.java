@@ -11,4 +11,6 @@ import java.util.List;
  */
 public interface ReportService {
     List<Permit> findPermitByDate(String checkIn, String checkOut) throws ParseException;
+
+    boolean checkFreeSeats(Integer id);
 }
